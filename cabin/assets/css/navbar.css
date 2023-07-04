@@ -1,0 +1,21 @@
+.navbar{
+    height: 5rem;
+    width: 100vw;
+    display: flex;
+    position: fixed;
+    /* background-color: var(--c1); */
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+
+    border-color:var(--c1);
+    border-style: solid;
+    border-radius: 2rem;
+    padding: 4px;
+}
+
+#title{
+    width: 100%;
+}
