@@ -1,8 +1,8 @@
 .navbar{
-    height: 5rem;
-    width: 100vw;
+    height: auto;
+    width: --webkit-fill-available;
     display: flex;
-    position: fixed;
+    position: relative;
     /* background-color: var(--c1); */
     flex-direction: row;
     flex-wrap: nowrap;
@@ -10,12 +10,17 @@
     justify-content: flex-start;
     align-items: center;
 
-    border-color:var(--c1);
+    border-color: var(--c4);
     border-style: solid;
-    border-radius: 2rem;
+    border-radius: 1rem;
     padding: 4px;
+
 }
 
 #title{
+    margin: 0;
     width: 100%;
+    color: var(--c2);
+    font-family: "FiraCode";
 }
+

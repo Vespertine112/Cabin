@@ -5,7 +5,7 @@
     </div>
 </template>
 
-<style>
-@import url("~/assets/css/navbar.css");
+<style lang="scss">
+@import url("~/assets/css/navbar.scss");
 </style>
 

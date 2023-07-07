@@ -5,8 +5,9 @@
   </div>
 </template>
 
+<!-- Styles -->
 <style>
-@import url("~/assets/css/main.css");
+@import url("~/assets/css/main.scss");
 
 .page-enter-active,
 .page-leave-active {
