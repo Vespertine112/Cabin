@@ -1,3 +1,4 @@
+
 .navbar{
     height: auto;
     width: --webkit-fill-available;
@@ -10,17 +11,32 @@
     justify-content: flex-start;
     align-items: center;
 
-    border-color: var(--c4);
+    border-color: var(--c2);
     border-style: solid;
     border-radius: 1rem;
     padding: 4px;
 
+    filter: drop-shadow(4px 4px 4px var(--c2));
+
+    .links{
+        display: flex;
+        flex-direction: row;
+        
+        .icon{
+            color: var(--c3);
+            size: 2rem;
+            /* top | right | bottom | left */
+            margin: 0 1rem 0 1rem;
+        }
+
+    }
+
 }
 
 #title{
-    margin: 0;
+    margin: 0 0 0 1rem;
+    color: var(--c3);
+    font-size: larger;
     width: 100%;
-    color: var(--c2);
-    font-family: "FiraCode";
 }
 

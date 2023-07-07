@@ -3,14 +3,14 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;    
-    src: url('cabin/assets/fonts/FiraCodeNerdFont-Regular.ttf') format('truetype');
+    src: url('~/assets/fonts/FiraCodeNerdFont-Regular.ttf') format('truetype');
 }
 
 body{
     margin: 0 auto;
     padding:1rem;
     background-color:#202124;
-    font: 'FiraCode';
+    font-family: "FiraCode";
 }
 
 body::-webkit-scrollbar{
