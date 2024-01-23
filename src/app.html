@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Vespertine</title>
+		%sveltekit.head%
+	</head>
+	<style>
+		@font-face {
+			font-family: "JetBrains Mono", monospace;
+			src: url("/fonts/JetBrainsMono-VariableFont_wght.ttf") format("ttf");
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "JetBrains Mono", monospace;
+			src: url("static/fonts/JetBrainsMono-Bold.ttf") format("ttf");
+			font-style: normal;
+			font-weight: bold;
+		}
+
+		body {
+			background-color: #231F20;
+			margin: 0;
+		}
+
+		:root {
+			--background: #231F20;
+			--persianRed: #BB4430;
+			--verdigris:  #7EBDC2;
+			--vanilla:    #F3DFA2;
+			--linen:      #EFE6DD;    
+		}
+		
+	</style>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>

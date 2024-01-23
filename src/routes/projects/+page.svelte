@@ -1,0 +1,142 @@
+<style>
+    .card {
+        border-radius: 8px; 
+        border: 4px solid var(--linen);
+        padding: 10px; 
+        color: var(--linen); 
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+        flex: 1;
+    }
+
+    .cardWrapper {
+        border-radius: 8px;
+        border: 4px solid var(--linen);
+        padding: 10px;
+        color: var(--linen);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: flex-start;
+        flex-wrap: nowrap;
+    }
+
+    .companyLogo {
+        height: 5vh;
+        border-radius: 4px;
+    }
+
+    hr {
+        width: 100%;
+    }
+
+    h1 {
+        font-family: "JetBrains Mono";
+        font-weight: normal;
+    }
+
+    .mediumHr {
+        width: 50vw;
+    }
+
+    .smallHr {
+        width: 30vw;
+    }
+
+    .projectWrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50vw;
+      margin: 8px 0 0 0;
+    }
+  
+    .projectHeading {
+      font-family: "JetBrains Mono";
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  
+    .projectTechnologies {
+      font-style: italic;
+      color: var(--accent-color);
+      width: 100%;
+    }
+
+    .projectTopper {
+        font-family: "JetBrains Mono";
+        font-style: italic;
+        width: 100%;
+    }
+  </style>
+  
+  <script lang="ts">
+    // Import necessary modules and types
+    import { typewriter } from "$lib/transitions";
+    import { blur, fly } from "svelte/transition";
+    import tippy from 'tippy.js';
+    import 'tippy.js/dist/tippy.css';
+    import 'tippy.js/themes/material.css';
+    import type { PageData } from './$types';
+    import { onMount } from "svelte";
+    import { blurOptions } from "$lib/standards";
+  
+    export let data: PageData;
+  
+    let show: boolean = false;
+    onMount(() => {
+      show = true;
+    });
+  
+    const projects = [
+      {
+        name: "OpenLift",
+        url: "https://github.com/Vespertine112/OpenLift",
+        technologies: "Python, PyTorch, Pandas, Numpy, etc",
+        date: "Nov 2023",
+        description: "Designed a Machine Learning Pipeline & Models to predict powerlifting totals for competition lifts. The models are very highly performant (R² >= 0.97). Performed data cleaning and curating, optimizing for lowest feature space possible with performance. Implemented custom classification reporting and analysis to parse results."
+      },
+      {
+        name: "Frappuccino Shop",
+        url: "https://docs.google.com/presentation/d/1elEZDd05HZh93MPgyaXxibHc3Y2HYyfBIkBaPX2hfpk/edit?usp=sharing",
+        technologies: "Typescript, Angular, Firebase Auth, MongoDB, Django",
+        date: "Aug - Dec 2022",
+        description: "Lead a team of student engineers to build a custom complete web application for a frappuccino shop. Developed and designed user account management through Firebase Auth, including many OAuth providers, and its interpolation in MongoDB. Helped architect and implement the ordering user flow in both the back-end and front-end, to create a streamlined experience and allow for order add-ons."
+      },
+      {
+        name: "High Performance Viewshed Computation",
+        url: "",
+        technologies: "C++, MPI, CUDA, OpenMP",
+        date: "Dec 2022",
+        images: [""],
+        description: "Worked on a team to create a high performance viewshed computation, running on multiple GPUs and CPUs across a clustered network. Designed and implemented the MPI control structure for the division of critical data across the network, and the accompanying distributed CPU approach. Created data visualizations and produced scaling reporting for the final program to demonstrate a 3600x increase in performance over single core."
+      }
+    ];
+  </script>
+  
+  <div transition:fly|global={{ y: 50, x: 50, duration: 1000 }} class="cardWrapper">
+    <h1>Projects</h1>
+    <hr>
+  
+    {#each projects as project}
+      <div class="projectWrapper">
+        <div class="projectTopper" transition:blur={blurOptions}>
+          <h2 class="projectHeading"><a style="color: white;" href={project.url}>{project.name}</a></h2>
+          <div class="projectTechnologies">{project.technologies}</div>
+          <div class="lineLabel">{project.date}</div>
+        </div>
+  
+        <hr class="mediumHr">
+        
+        <hr class="smallHr">
+        <div class="experienceDescription" transition:typewriter|global={{speed:20}}>
+          {project.description}
+        </div>
+  
+        <hr class="smallHr">
+      </div>
+    {/each}
+  </div>
+  
