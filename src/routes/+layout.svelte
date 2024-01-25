@@ -30,21 +30,17 @@
         height: 100%;
     }
 
-    body {
-        font-family: "JetBrains Mono", monospace;
-    }
-
     @media only screen and (max-width: 767px) {
         .slotted { 
             display: flex;
             flex: 1 0 90%;
             max-height: 90vh;
             width: -webkit-fill-available;
-
         }
         
         .navbar { 
-            display: none;
+            width: 0%;
+            flex: 0 0 0%;
         }
     }
     
@@ -52,7 +48,7 @@
 
 <script lang="ts">
 	import { onMount } from "svelte";
-    import Navbar from "./Navbar.svelte";
+    import Navbar from "./Navbar/Navbar.svelte";
     import Topbar from "./Topbar.svelte";
     import { fly } from "svelte/transition";
     import { page } from "$app/stores";
@@ -62,15 +58,17 @@
         show = true;
     });
 
+    let open = true;
+
     $page.url
 </script>
 
 <div class="pageWrapper">
-    <Topbar/>
+    <Topbar bind:sidebar={open}/>
 
     <div class="bodyColumns">
         <div class="navbar">
-            <Navbar/>
+            <Navbar bind:open/>
         </div>
         {#if show}
             <div class="slotted">

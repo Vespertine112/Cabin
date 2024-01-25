@@ -10,6 +10,7 @@
         justify-content: space-between;
         box-shadow: var(--shadow);
         align-items: center;
+        z-index: 1001;
     }
 
 
@@ -33,13 +34,19 @@
         width: 100%;
     }
 
+    .hamburger {
+        display: none;
+    }
+
     @media only screen and (max-width: 767px) {
         .pageName {
             font-size: 1rem;
             font-family: "JetBrains Mono";
         }
 
-
+        .hamburger {
+            display: flex;
+        }
     }
 
 </style>
@@ -50,6 +57,9 @@
     import { typewriter } from '$lib/transitions';
     import { updateTopbarName, readableTopbarName } from "$lib/stores";
     import tippy, { type Props } from "tippy.js";
+    import Hamburger from "./Navbar/Hamburger.svelte";
+
+    export let sidebar = false;
 
     let show = false;
     onMount(() => {
@@ -87,7 +97,11 @@
 </script>
 
 {#if show}
-<div class="top-bar" in:fly|global={{y:-50, duration:1000}} out:fade>
+    <div class="top-bar" in:fly|global={{y:-50, duration:1000}} out:fade>
+
+        <div class="hamburger">
+            <Hamburger bind:open={sidebar}></Hamburger>
+        </div>
 
         {#key displayName}
             <!-- svelte-ignore a11y-no-static-element-interactions -->
