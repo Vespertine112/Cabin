@@ -37,10 +37,16 @@
     width: 100%;
   }
 
+  .link-arrow {
+    color: var(--linen);
+    font-weight: 900;
+    font-style: normal;
+  }
+
   .active > a{
     color: var(--verdigris);
-    font-weight: 900;
-    font-style: italic;
+    font-weight: bolder;
+    /* font-style: italic; */
   }
 
   .open {
@@ -111,7 +117,7 @@
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <li class={intSelected==i ? "active" : ""} >
             <a on:click={changeComponent} id={i.toString()} transition:fade|global={{delay:i*500}} href="{nav.url}">
-            => &#123;{nav.label}&#125;
+            <span class="link-arrow" >=></span> &#123;{nav.label}&#125;
           </a>
         </li>
         <hr>

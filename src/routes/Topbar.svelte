@@ -65,7 +65,7 @@
         show = true;
     });
     
-    $: displayName = `{ ${$readableTopbarName} }`;
+    $: displayName = `{${$readableTopbarName}}`;
 
 	function tooltip(node:Element, options:Object) {
 		const tooltip = tippy(node, options);
