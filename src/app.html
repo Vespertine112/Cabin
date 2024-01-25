@@ -8,18 +8,7 @@
 		%sveltekit.head%
 	</head>
 	<style>
-		@font-face {
-			font-family: "JetBrains Mono", monospace;
-			src: url("fonts/static/JetBrainsMono-Regular.ttf");
-			font-style: normal;
-		}
-		/* @font-face {
-			font-family: "JetBrains Mono", monospace;
-			src: url("fonts/static/JetBrainsMono-Bold.ttf");
-			font-style: normal;
-			font-weight: bold;
-		} */
-
+		
 		:root {
 			--background: #231f20;
 			--persianRed: #BB4430;
@@ -27,6 +16,37 @@
 			--vanilla:    #F3DFA2;
 			--linen:      #EFE6DD;    
 			--shadow: 0 8px 16px rgba(0, 0, 0, 1);
+		}
+
+		@font-face {
+			font-family: "JetBrains Mono";
+			src: url("fonts/static/JetBrainsMono-Regular.ttf") format('truetype'),
+				 url("fonts/JetBrainsMono-VariableFont_wght.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-Bold.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-BoldItalic.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-ExtraBold.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-ExtraBoldItalic.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-ExtraLight.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-ExtraLightItalic.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-Italic.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-Light.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-LightItalic.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-Medium.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-MediumItalic.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-Regular.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-SemiBold.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-SemiBoldItalic.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-Thin.ttf") format('truetype'),
+				 url("fonts/static/JetBrainsMono-ThinItalic.ttf") format('truetype');
+			font-style: normal;
+		}
+
+		body {
+			background-image: linear-gradient(to bottom right, #231F20, #BB4430);
+			margin: 0;
+			scrollbar-width: thin; 
+  			scrollbar-color: var(--verdigris); 
+			font-family: "JetBrains Mono", monospace;
 		}
 
 		.cardWrapper {
@@ -45,15 +65,6 @@
 			flex-wrap: nowrap;
 			overflow-y: scroll;
 			overflow-x: hidden;
-			font-family: "JetBrains Mono", monospace;
-		}
-
-
-		body {
-			background-image: linear-gradient(to bottom right, #231F20, #BB4430);
-			margin: 0;
-			scrollbar-width: thin; 
-  			scrollbar-color: var(--verdigris); 
 			font-family: "JetBrains Mono", monospace;
 		}
 

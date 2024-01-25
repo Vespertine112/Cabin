@@ -153,7 +153,7 @@
 
         <hr class="mediumHr">
 
-        {#if browser}        
+        {#if browser}
           {#if project.images}
               <Carousel
               autoplay
