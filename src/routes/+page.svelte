@@ -15,10 +15,6 @@
         border: 4px var(--verdigris) solid;
     }
 
-    .links {
-        color: var(--linen);
-    }
-
     .p-line {
         padding: 0 1rem 0 1rem ;
     }
@@ -27,10 +23,6 @@
         margin-top: auto;
         max-width:60vw;
         font-size: smaller;
-    }
-
-    .quoteBlock > i > a {
-        color: var(--linen);
     }
 
     @media only screen and (max-width: 767px) {
@@ -111,7 +103,7 @@
         <p class="p-line" in:fly={{x:-500, duration:2500}}>Feel free to contact me at any of the links above! I'd love to hear from you!</p>
 
         <div class="quoteBlock">
-            <i>{quote.content} - <a href={author.url} use:tooltip={{content: author.description, theme:"material", placement:"top" }} target="_blank">{quote.author}</a></i>
+            <i>{quote.content} - <a href={author.url} class="links" use:tooltip={{content: author.bio, theme:"material", placement:"top" }} target="_blank">{quote.author}</a></i>
         </div>
     </div>    
 {/if}

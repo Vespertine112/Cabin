@@ -146,7 +146,7 @@
     {#each projects as project}
       <div class="projectWrapper">
         <div class="projectTopper" transition:blur={blurOptions}>
-          <h2 class="projectHeading"><a style="color: white;" href={project.url} target="_blank">{project.name}</a></h2>
+          <h2 class="projectHeading"><a class="links" href={project.url} target="_blank">{project.name}</a></h2>
           <div class="projectTechnologies">Technologies: {project.technologies}</div>
           <div class="lineLabel">{project.date}</div>
         </div>

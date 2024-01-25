@@ -131,7 +131,7 @@
                     </div>
     
                     <div class="experienceTime">
-                        <div class="lineLabel"><a style="color:white;" href={experience.url} target="_blank">{experience.name}</a></div>                
+                        <div class="lineLabel"><a class="links" href={experience.url} target="_blank">{experience.name}</a></div>                
                         <div class="lineLabel">{experience.elapsedTime}</div>
                         <div class="lineLabel">{experience.jobTitle} - {experience.technologies}</div>                
                     </div>
