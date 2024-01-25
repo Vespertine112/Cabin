@@ -36,3 +36,11 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+### Vercel Deployment
+
+Vercel should hook into commits and redeploy to prod. If this doesn't happen, investigate on the site, or download the Vercel CLI tool and re-deploy from an instance. 
+
+### Resources:
+- https://github.com/vadimkorr/svelte-carousel?tab=readme-ov-file
+- https://github.com/lukePeavey/quotable

@@ -1,4 +1,8 @@
 <style>
+    .cardWrapper {
+        overflow-y: unset;
+    }
+
     .profilePicWrapper {
         display: flex;
         justify-content: center;
@@ -19,6 +23,22 @@
         padding: 0 1rem 0 1rem ;
     }
 
+    .quoteBlock { 
+        margin-top: auto;
+        max-width:60vw;
+        font-size: smaller;
+    }
+
+    .quoteBlock > i > a {
+        color: var(--linen);
+    }
+
+    @media only screen and (max-width: 767px) {
+        .quoteBlock {
+            font-size: x-small;
+        }
+    }
+
 </style>
 
 <script lang="ts">
@@ -29,24 +49,10 @@
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/material.css';
     import { updateTopbarName, readableTopbarName } from "$lib/stores";
+
+    let toolTipContent = 'Rocky Mountain High!';
     
     updateTopbarName("Brayden Hill")
-
-    let content = 'Cold in Colorado!';
-
-	function tooltip(node:Element, options:Object) {
-		const tooltip = tippy(node, options);
-
-		return {
-			update(options: Partial<Props>){
-				tooltip.setProps(options);
-			},
-			destroy() {
-				tooltip.destroy();
-			}
-		};
-	}
-
     let show:boolean = false;
     onMount(()=>{
         show = true;
@@ -55,13 +61,44 @@
         show = false;
     });
 
+	function tooltip(node:Element, options:Object) {
+        const tooltip = tippy(node, options);
+        
+		return {
+            update(options: Partial<Props>){
+                tooltip.setProps(options);
+			},
+			destroy() {
+                tooltip.destroy();
+			}
+		};
+	}
+
+    $: quote = {content: "", author: "", authorSlug: ""};
+    $: author = {url: "", bio: "", description: ""};
+    const getRandomInt = (min:number, max:number) => Math.floor(Math.random() * (max - min + 1)) + min;
+    fetch("https://api.quotable.io/quotes?tags=Technology|Creativity|Imagination|Science|Creativity")
+        .then(result=>result.json())
+        .then(result => {
+            quote = result.results[getRandomInt(0, result.results.length)];
+            return fetch(`https://api.quotable.io/authors?slug=${quote.authorSlug}`);
+        })
+        .then(response => response.json())
+        .then(result => {                        
+            let res = result.results[0];
+            author = {url: res.link, bio: res.bio, description: res.description};            
+        })
+        .catch(err => {
+            console.warn(`Error fetching home page quote`, err);
+        })
+    
 </script>
 
 {#if show}
     <div transition:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
         <h1 class="topline" in:typewriter={{}}>Hi, I'm Brayden.</h1>
 
-        <div use:tooltip={{content, theme:"material", placement: "right"}} class="profilePicWrapper">
+        <div use:tooltip={{content: toolTipContent, theme:"material", placement: "bottom"}} class="profilePicWrapper">
             <!-- svelte-ignore a11y-img-redundant-alt -->
             <img transition:blur={{amount:100, duration:1000}} src="/images/profile/profile.jpg" class="profilePic" alt="Profile Picture">
         </div>
@@ -72,5 +109,9 @@
             <i><a class="links" href="https://en.wikipedia.org/wiki/The_Crystal_Palace" target="_blank">Crystal Palace, anyone?</a></i>
         </p>
         <p class="p-line" in:fly={{x:-500, duration:2500}}>Feel free to contact me at any of the links above! I'd love to hear from you!</p>
+
+        <div class="quoteBlock">
+            <i>{quote.content} - <a href={author.url} use:tooltip={{content: author.description, theme:"material", placement:"top" }} target="_blank">{quote.author}</a></i>
+        </div>
     </div>    
 {/if}
