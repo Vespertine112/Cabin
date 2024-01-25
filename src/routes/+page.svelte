@@ -63,7 +63,7 @@
             <img transition:blur={{amount:100, duration:1000}} src="/images/profile/profile.jpg" class="profilePic" alt="Profile Picture">
         </div>
 
-        <p in:fly={{x:500, duration:2500}}>Welcome in! I'm a software developer with <strong>4 years</strong> of experience.</p>
+        <p in:fly={{x:500, duration:2500}}>Welcome in! I'm a software developer with <strong>{(new Date().getFullYear()) - 2020} years</strong> of experience.</p>
         <p in:fly={{x:-500, duration:2500}}>Currently, I work as a <strong>Full-Stack Developer</strong>, but I have an interest in all things computing. </p>
         <p in:fly={{x:500, duration:2500}}>When I'm not writing code, I love to get outdoors, exercise, or fall down the rabbit hole on a fascinating topic! 
             <i><a class="links" href="https://en.wikipedia.org/wiki/The_Crystal_Palace" target="_blank">Crystal Palace, anyone?</a></i>

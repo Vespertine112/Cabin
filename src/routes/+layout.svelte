@@ -38,8 +38,9 @@
         .slotted { 
             display: flex;
             flex: 1 0 90%;
-            height: 100%;
+            max-height: 90vh;
             width: -webkit-fill-available;
+
         }
         
         .navbar { 

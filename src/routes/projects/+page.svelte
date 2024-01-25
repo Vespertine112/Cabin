@@ -4,7 +4,7 @@
         border: 4px solid var(--linen);
         padding: 10px; 
         color: var(--linen); 
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+        box-shadow: var(--shadow);
         flex: 1;
     }
 
@@ -58,6 +58,16 @@
 
     .carouselImage {
       max-width: 50vw;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .projectWrapper { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 78vw;
+            margin: 8px 0 0 0;
+        }
     }
 
   </style>

@@ -4,7 +4,7 @@
         border: 4px solid var(--linen);
         padding: 10px; 
         color: var(--linen); 
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+        box-shadow: var(--shadow);
         flex: 1;
     }
 
@@ -52,6 +52,16 @@
         overflow: visible;
     }
 
+    @media only screen and (max-width: 767px) {
+        .experienceWrapper { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 78vw;
+            margin: 8px 0 0 0;
+        }
+    }
+
 </style>
 
 <script lang="ts">
@@ -78,7 +88,7 @@
         {
             name: "Global Vinyl Solutions",
             logo: "/icons/GVS.png",
-            url: "sei.com",
+            url: "https://globalvinylsolutions.com/",
             jobTitle: "Junior Full-Stack Developer",
             technologies: "Electron, Angular, MongoDB, Node",
             elapsedTime: "May 2022 - Present", 
@@ -93,7 +103,7 @@
         {
             name: "SEI Consulting",
             logo: "/icons/SEI.png",
-            url: "https://globalvinylsolutions.com/",
+            url: "https://www.sei.com/",
             jobTitle: "Software Engineering Intern",
             technologies: "Python, Powershell, Bash",
             elapsedTime: "May 2021 - May 2022", 
@@ -121,7 +131,7 @@
                     </div>
     
                     <div class="experienceTime">
-                        <div class="lineLabel"><a style="color:white;" href={experience.url}>{experience.name}</a></div>                
+                        <div class="lineLabel"><a style="color:white;" href={experience.url} target="_blank">{experience.name}</a></div>                
                         <div class="lineLabel">{experience.elapsedTime}</div>
                         <div class="lineLabel">{experience.jobTitle} - {experience.technologies}</div>                
                     </div>

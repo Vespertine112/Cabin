@@ -5,7 +5,7 @@ nav {
     border: 4px solid var(--linen);
     background-color: var(--background);
     padding: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+    box-shadow: var(--shadow);
     display: flex;
     margin: 0 4px 0 0;
     flex-direction: column;

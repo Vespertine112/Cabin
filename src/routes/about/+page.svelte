@@ -4,7 +4,7 @@
         border: 4px solid var(--linen);
         padding: 10px; 
         color: var(--linen); 
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+        box-shadow: var(--shadow);
         flex: 1;
     }
 
@@ -27,6 +27,7 @@
     import type { PageData } from './$types';
     import { onDestroy, onMount } from "svelte";
     import { cardTransition } from "$lib/standards";
+    import { updateTopbarName } from "$lib/stores";
     
     export let data: PageData;
 
@@ -34,6 +35,8 @@
     onMount(() => {
         show = true;
     });
+
+    updateTopbarName("About Me");
 
     let content = 'Grab a copy of my current Resume!';
 

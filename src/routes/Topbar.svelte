@@ -8,7 +8,7 @@
         background-color: var(--background);
         display: flex;
         justify-content: space-between;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+        box-shadow: var(--shadow);
         align-items: center;
     }
 
@@ -34,6 +34,11 @@
     }
 
     @media only screen and (max-width: 767px) {
+        .pageName {
+            font-size: 1rem;
+            font-family: "JetBrains Mono";
+        }
+
 
     }
 
