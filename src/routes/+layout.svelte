@@ -20,6 +20,8 @@
         display: flex;
         flex: 1 0 10%;
         height: 100%;
+        width: -webkit-fill-available;
+
     }
 
     .slotted {
@@ -30,6 +32,19 @@
 
     body {
         font-family: "JetBrains Mono", monospace;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .slotted { 
+            display: flex;
+            flex: 1 0 90%;
+            height: 100%;
+            width: -webkit-fill-available;
+        }
+        
+        .navbar { 
+            display: none;
+        }
     }
     
 </style>

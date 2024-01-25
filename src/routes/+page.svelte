@@ -5,7 +5,8 @@
     }
     
     .profilePic {
-        height: 30vh;
+        max-height: 30vh;
+        max-width: 60vw;
         border-radius: 1em;
         border: 4px var(--verdigris) solid;
     }
