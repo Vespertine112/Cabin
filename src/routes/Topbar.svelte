@@ -35,11 +35,12 @@
 
 </style>
 
-<script>
+<script lang="ts">
 	import { onMount } from "svelte";
     import { fly, fade } from "svelte/transition";
     import { typewriter } from '$lib/transitions';
     import { updateTopbarName, readableTopbarName } from "$lib/stores";
+    import tippy, { type Props } from "tippy.js";
 
     let show = false;
     onMount(() => {
@@ -48,24 +49,52 @@
     
     $: displayName = `{ ${$readableTopbarName} }`;
 
+	function tooltip(node:Element, options:Object) {
+		const tooltip = tippy(node, options);
+
+		return {
+			update(options: Partial<Props>){
+				tooltip.setProps(options);
+			},
+			destroy() {
+				tooltip.destroy();
+			}
+		};
+	}
+
+    let nameStorage: string = "";
+    readableTopbarName.subscribe((name)=>{
+        if (name != "Vespertine") nameStorage = name;
+    });
+
+    function vesperizeName(){
+        updateTopbarName("Vespertine");  
+    };
+    function regularName(){
+        updateTopbarName(nameStorage);
+    }
+
+
 </script>
 
 {#if show}
 <div class="top-bar" in:fly|global={{y:-50, duration:1000}} out:fade>
+
         {#key displayName}
-            <div class="pageName" in:typewriter|global={{}}>{displayName}</div>
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div class="pageName" on:mouseenter={vesperizeName} on:mouseleave={regularName} in:typewriter|global={{speed:1}}>{displayName}</div>
         {/key}
 
         <div class="menu">
-            <a  href="mailto:hillbgh@gmail.com" class="menu-item">
+            <a use:tooltip={{content:"Email Me!", theme:"material", placement:"bottom"}} href="mailto:hillbgh@gmail.com" class="menu-item">
                 <img src="icons/email.svg" alt="My Email" class="logo">
             </a>
             
-            <a href="https://github.com/Vespertine112" class="menu-item" target="_blank">
+            <a use:tooltip={{content:"My Github",  theme:"material", placement:"bottom"}} href="https://github.com/Vespertine112" class="menu-item" target="_blank">
                 <img src="icons/github.svg" alt="GitHub" class="logo">
             </a>
             
-            <a href="https://www.linkedin.com/in/brayden-hill/" class="menu-item" target="_blank">
+            <a use:tooltip={{content:"My LinkedIn", theme:"material", placement:"bottom"}} href="https://www.linkedin.com/in/brayden-hill/" class="menu-item" target="_blank">
                 <img src="icons/linkedin.svg" alt="Linkedin" class="logo">
             </a>
 

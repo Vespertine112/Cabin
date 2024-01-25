@@ -10,6 +10,10 @@
         border: 4px var(--verdigris) solid;
     }
 
+    .links {
+        color: var(--linen);
+    }
+
 
 </style>
 
@@ -47,19 +51,22 @@
         show = false;
     });
 
-    let text = "Welcome in! I'm a software developer with <strong>4 years</strong> of experience.";
-
 </script>
 
 {#if show}
     <div transition:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
-        <h1 in:typewriter={{}}>Hi, I'm Brayden</h1>
+        <h1 in:typewriter={{}}>Hi, I'm Brayden.</h1>
 
         <div use:tooltip={{content, theme:"material", placement: "right"}} class="profilePicWrapper">
             <!-- svelte-ignore a11y-img-redundant-alt -->
-            <img transition:blur={{amount:100, duration:1000}} src="/images/profile.jpg" class="profilePic" alt="Profile Picture">
+            <img transition:blur={{amount:100, duration:1000}} src="/images/profile/profile.jpg" class="profilePic" alt="Profile Picture">
         </div>
 
-        <p in:typewriter={{speed:5}}>{text}</p>
+        <p in:fly={{x:500, duration:2500}}>Welcome in! I'm a software developer with <strong>4 years</strong> of experience.</p>
+        <p in:fly={{x:-500, duration:2500}}>Currently, I work as a <strong>Full-Stack Developer</strong>, but I have an interest in all things computing. </p>
+        <p in:fly={{x:500, duration:2500}}>When I'm not writing code, I love to get outdoors, exercise, or fall down the rabbit hole on a fascinating topic! 
+            <i><a class="links" href="https://en.wikipedia.org/wiki/The_Crystal_Palace" target="_blank">Crystal Palace, anyone?</a></i>
+        </p>
+        <p in:fly={{x:-500, duration:2500}}>Feel free to contact me at any of the links above! I'd love to hear from you!</p>
     </div>    
 {/if}

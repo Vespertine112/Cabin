@@ -97,11 +97,11 @@
         technologies: "Python, PyTorch, Pandas, Numpy, etc",
         date: "Nov 2023",
         images: [
-          "images/Bench_Txt.png",
-          "images/Squat_AP.png",
-          "images/Squat_RES.png",
-          "images/No_Lift_RES.png",
-          "images/No_Lift_AP.png",
+          "images/projects/Bench_Txt.png",
+          "images/projects/Squat_AP.png",
+          "images/projects/Squat_RES.png",
+          "images/projects/No_Lift_RES.png",
+          "images/projects/No_Lift_AP.png",
         ],
         description: "Designed a Machine Learning Pipeline & Models to predict powerlifting totals for competition lifts. The models are very highly performant (R² >= 0.97). Performed data cleaning and curating, optimizing for lowest feature space possible with performance. Implemented custom classification reporting and analysis to parse results."
       },
@@ -111,9 +111,9 @@
         technologies: "Typescript, Angular, Firebase Auth, MongoDB, Django",
         date: "Aug - Dec 2022",
         images: [
-          "/images/frap2.png",
-          "/images/frap3.png",
-          "/images/frap4.png"
+          "/images/projects/frap2.png",
+          "/images/projects/frap3.png",
+          "/images/projects/frap4.png"
         ],
         description: "Lead a team of student engineers to build a custom complete web application for a frappuccino shop. Developed and designed user account management through Firebase Auth, including many OAuth providers, and its interpolation in MongoDB. Helped architect and implement the ordering user flow in both the back-end and front-end, to create a streamlined experience and allow for order add-ons."
       },
@@ -122,7 +122,7 @@
         url: "",
         technologies: "C++, MPI, CUDA, OpenMP",
         date: "Dec 2022",
-        video: "images/viewshed.mp4",
+        video: "images/projects/viewshed.mp4",
         description: "Worked on a team to create a high performance viewshed computation, running on multiple GPUs and CPUs across a clustered network. Designed and implemented the MPI control structure for the division of critical data across the network, and the accompanying distributed CPU approach. Created data visualizations and produced scaling reporting for the final program to demonstrate a 3600x increase in performance over single core.",
       }
     ];
