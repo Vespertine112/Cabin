@@ -119,7 +119,7 @@
 
 {#if show}
     <div in:fly={cardTransition} class="cardWrapper">
-        <h1>Professional Experience</h1>
+        <h1 class="topline">Professional Experience</h1>
 
         <hr>
 

@@ -10,7 +10,6 @@
         justify-content: space-between;
         box-shadow: var(--shadow);
         align-items: center;
-        z-index: 1001;
     }
 
 
@@ -97,7 +96,7 @@
 </script>
 
 {#if show}
-    <div class="top-bar" in:fly|global={{y:-50, duration:1000}} out:fade>
+    <div class="top-bar" style={sidebar ? "z-index: 1001" :  "z-index: 0" } in:fly|global={{y:-50, duration:1000}} out:fade>
 
         <div class="hamburger">
             <Hamburger bind:open={sidebar}></Hamburger>

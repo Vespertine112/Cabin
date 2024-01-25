@@ -28,6 +28,7 @@
         display: flex;
         flex: 1 0 90%;
         height: 100%;
+        z-index: 0;
     }
 
     @media only screen and (max-width: 767px) {
@@ -58,7 +59,7 @@
         show = true;
     });
 
-    let open = true;
+    let open = false;
 
     $page.url
 </script>

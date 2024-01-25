@@ -56,7 +56,7 @@
 
 {#if show}
     <div in:fly={cardTransition} out:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
-        <h1>About Me</h1>
+        <h1 class="topline">About Me</h1>
         tbd
 
         <hr>

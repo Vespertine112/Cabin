@@ -140,7 +140,7 @@
   
 {#if show}
   <div transition:fly={cardTransition} class="cardWrapper">
-    <h1>Projects</h1>
+    <h1 class="topline">Projects</h1>
     <hr>
 
     {#each projects as project}
