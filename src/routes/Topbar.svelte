@@ -5,6 +5,7 @@
         border: 4px solid var(--linen);
         padding: 10px; 
         color: var(--linen); 
+        background-color: var(--background);
         display: flex;
         justify-content: space-between;
         box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
@@ -38,20 +39,28 @@
 	import { onMount } from "svelte";
     import { fly, fade } from "svelte/transition";
     import { typewriter } from '$lib/transitions';
-    export let pageName = "Brayden Hill";
+    import { updateTopbarName, readableTopbarName } from "$lib/stores";
 
     let show = false;
     onMount(() => {
         show = true;
     });
+    
+    $: displayName = `{ ${$readableTopbarName} }`;
 
-    $: displayName = `{ ${pageName} }`;
 </script>
 
 {#if show}
 <div class="top-bar" in:fly|global={{y:-50, duration:1000}} out:fade>
-        <div class="pageName" in:typewriter={{}}>{displayName}</div>
+        {#key displayName}
+            <div class="pageName" in:typewriter|global={{}}>{displayName}</div>
+        {/key}
+
         <div class="menu">
+            <a  href="mailto:hillbgh@gmail.com" class="menu-item">
+                <img src="icons/email.svg" alt="My Email" class="logo">
+            </a>
+            
             <a href="https://github.com/Vespertine112" class="menu-item" target="_blank">
                 <img src="icons/github.svg" alt="GitHub" class="logo">
             </a>
@@ -59,6 +68,7 @@
             <a href="https://www.linkedin.com/in/brayden-hill/" class="menu-item" target="_blank">
                 <img src="icons/linkedin.svg" alt="Linkedin" class="logo">
             </a>
+
         </div>        
     </div>
 {/if}

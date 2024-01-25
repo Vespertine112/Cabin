@@ -3,6 +3,7 @@
 nav {
     border-radius: 8px;
     border: 4px solid var(--linen);
+    background-color: var(--background);
     padding: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
     display: flex;
@@ -35,6 +36,12 @@ nav {
     width: 100%;
   }
 
+  .active > a{
+    color: var(--verdigris);
+    font-weight: 900;
+    font-style: italic;
+  }
+
   @font-face {
 		font-family: "JetBrains Mono", monospace;
 		src: url("/fonts/JetBrainsMono-VariableFont_wght.ttf") format("ttf");
@@ -43,16 +50,17 @@ nav {
 </style>
 
 <script lang="ts">
-	import { typewriter } from "$lib/transitions";
+	import { page } from "$app/stores";
+  import { typewriter } from "$lib/transitions";
 	import { onMount } from "svelte";
   import { fly, fade } from "svelte/transition";
 
   export const navOptions = [
-    { url: "/", label: "Home" },
-    { url: "/about", label: "About" },
-    { url: "/experience", label: "Experience" },
-    { url: "/projects", label: "Projects" },
-    { url: "/blog", label: "Blog" },
+    { url: "/",           label: "Home"       },      
+    // { url: "/about",      label: "About"      },      
+    { url: "/experience", label: "Experience" },      
+    { url: "/projects",   label: "Projects"   },      
+    { url: "/blog",       label: "Blog"       },      
   ];
 
   let show:boolean = false;
@@ -60,6 +68,13 @@ nav {
   onMount(()=>{
     show = true;
   });
+
+  let intSelected:number = navOptions.findIndex(option => option.url == $page.route.id);    
+
+  function changeComponent(event: any){
+    intSelected = event.srcElement.id;
+  }
+
 </script>
 
 
@@ -68,8 +83,10 @@ nav {
   <nav in:fly|global={{y:50, x:-50, duration:1000}}>
     <ul>
       {#each navOptions as nav, i}
-        <li>
-          <a transition:fade|global={{delay:i*250}} href="{nav.url}">
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+        <li class={intSelected==i ? "active" : ""} >
+            <a on:click={changeComponent} id={i.toString()} transition:fade|global={{delay:i*250}} href="{nav.url}">
             => &#123;{nav.label}&#125;
           </a>
         </li>

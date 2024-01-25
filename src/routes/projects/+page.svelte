@@ -8,21 +8,6 @@
         flex: 1;
     }
 
-    .cardWrapper {
-        border-radius: 8px;
-        border: 4px solid var(--linen);
-        padding: 10px;
-        color: var(--linen);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        align-content: flex-start;
-        flex-wrap: nowrap;
-    }
-
     .companyLogo {
         height: 5vh;
         border-radius: 4px;
@@ -70,6 +55,11 @@
         font-style: italic;
         width: 100%;
     }
+
+    .carouselImage {
+      max-width: 50vw;
+    }
+
   </style>
   
   <script lang="ts">
@@ -81,21 +71,38 @@
     import 'tippy.js/themes/material.css';
     import type { PageData } from './$types';
     import { onMount } from "svelte";
-    import { blurOptions } from "$lib/standards";
+    import { blurOptions, cardTransition } from "$lib/standards";
+    import Carousel from 'svelte-carousel';
+    import { browser } from '$app/environment';
+    import { updateTopbarName, readableTopbarName } from "$lib/stores";
   
     export let data: PageData;
   
     let show: boolean = false;
+    let carousel:any; 
+
     onMount(() => {
       show = true;
     });
-  
+    const handleNextClick = () => {
+        carousel.goToNext()
+    }
+
+    updateTopbarName("My Projects");
+
     const projects = [
       {
         name: "OpenLift",
         url: "https://github.com/Vespertine112/OpenLift",
         technologies: "Python, PyTorch, Pandas, Numpy, etc",
         date: "Nov 2023",
+        images: [
+          "images/Bench_Txt.png",
+          "images/Squat_AP.png",
+          "images/Squat_RES.png",
+          "images/No_Lift_RES.png",
+          "images/No_Lift_AP.png",
+        ],
         description: "Designed a Machine Learning Pipeline & Models to predict powerlifting totals for competition lifts. The models are very highly performant (R² >= 0.97). Performed data cleaning and curating, optimizing for lowest feature space possible with performance. Implemented custom classification reporting and analysis to parse results."
       },
       {
@@ -103,6 +110,11 @@
         url: "https://docs.google.com/presentation/d/1elEZDd05HZh93MPgyaXxibHc3Y2HYyfBIkBaPX2hfpk/edit?usp=sharing",
         technologies: "Typescript, Angular, Firebase Auth, MongoDB, Django",
         date: "Aug - Dec 2022",
+        images: [
+          "/images/frap2.png",
+          "/images/frap3.png",
+          "/images/frap4.png"
+        ],
         description: "Lead a team of student engineers to build a custom complete web application for a frappuccino shop. Developed and designed user account management through Firebase Auth, including many OAuth providers, and its interpolation in MongoDB. Helped architect and implement the ordering user flow in both the back-end and front-end, to create a streamlined experience and allow for order add-ons."
       },
       {
@@ -110,33 +122,60 @@
         url: "",
         technologies: "C++, MPI, CUDA, OpenMP",
         date: "Dec 2022",
-        images: [""],
-        description: "Worked on a team to create a high performance viewshed computation, running on multiple GPUs and CPUs across a clustered network. Designed and implemented the MPI control structure for the division of critical data across the network, and the accompanying distributed CPU approach. Created data visualizations and produced scaling reporting for the final program to demonstrate a 3600x increase in performance over single core."
+        video: "images/viewshed.mp4",
+        description: "Worked on a team to create a high performance viewshed computation, running on multiple GPUs and CPUs across a clustered network. Designed and implemented the MPI control structure for the division of critical data across the network, and the accompanying distributed CPU approach. Created data visualizations and produced scaling reporting for the final program to demonstrate a 3600x increase in performance over single core.",
       }
     ];
   </script>
   
-  <div transition:fly|global={{ y: 50, x: 50, duration: 1000 }} class="cardWrapper">
+{#if show}
+  <div transition:fly={cardTransition} class="cardWrapper">
     <h1>Projects</h1>
     <hr>
-  
+
     {#each projects as project}
       <div class="projectWrapper">
         <div class="projectTopper" transition:blur={blurOptions}>
-          <h2 class="projectHeading"><a style="color: white;" href={project.url}>{project.name}</a></h2>
-          <div class="projectTechnologies">{project.technologies}</div>
+          <h2 class="projectHeading"><a style="color: white;" href={project.url} target="_blank">{project.name}</a></h2>
+          <div class="projectTechnologies">Technologies: {project.technologies}</div>
           <div class="lineLabel">{project.date}</div>
         </div>
-  
+
         <hr class="mediumHr">
-        
+
+        {#if browser}        
+          {#if project.images}
+              <Carousel
+              autoplay
+              autoplayDuration={5000}
+              autoplayProgressVisible
+              pauseOnFocus
+              swiping={true}
+              bind:this={carousel}
+              >
+
+                {#each project.images as image}
+                  <img class="carouselImage" src={image} alt="">
+                {/each}
+              </Carousel>
+          {/if}
+
+
+          {#if project.video}
+            <!-- svelte-ignore a11y-media-has-caption -->
+            <video class="carouselImage" src={project.video} controls autoplay loop></video>
+          {/if}
+        {/if}
+
         <hr class="smallHr">
-        <div class="experienceDescription" transition:typewriter|global={{speed:20}}>
+
+        <div class="experienceDescription" in:typewriter|global={{speed:20}}>
           {project.description}
         </div>
-  
+
         <hr class="smallHr">
       </div>
     {/each}
   </div>
+{/if}
   

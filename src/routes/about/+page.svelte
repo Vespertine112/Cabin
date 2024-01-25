@@ -8,21 +8,6 @@
         flex: 1;
     }
 
-    .cardWrapper {
-        border-radius: 8px;
-        border: 4px solid var(--linen);
-        padding: 10px;
-        color: var(--linen);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        align-content: flex-start;
-        flex-wrap: nowrap;
-    }
-
     .resume {
         height: 5vh;
     }
@@ -40,19 +25,43 @@
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/material.css';
     import type { PageData } from './$types';
+    import { onDestroy, onMount } from "svelte";
+    import { cardTransition } from "$lib/standards";
     
     export let data: PageData;
 
+    let show:boolean = false;
+    onMount(() => {
+        show = true;
+    });
+
+    let content = 'Grab a copy of my current Resume!';
+
+    function tooltip(node:Element, options:Object) {
+        const tooltip = tippy(node, options);
+
+        return {
+            update(options: Partial<Props>){
+                tooltip.setProps(options);
+            },
+            destroy() {
+                tooltip.destroy();
+            }
+        };
+    }
 </script>
 
-<div transition:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
-    <h1>About Me</h1>
-    tbd
+{#if show}
+    <div in:fly={cardTransition} out:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
+        <h1>About Me</h1>
+        tbd
 
-    <hr>
+        <hr>
 
-    <div>
-        <img class="resume" src="/icons/resume.png" alt="">
-    </div>
-</div>
-    
+        <div use:tooltip={{content, theme:"material", placement: "right"}}>
+            <a href="https://drive.google.com/file/d/1laEwku355kUeae-_aoF442zvMpOCNZfe/view?usp=sharing" target="_blank">
+                <img class="resume" src="/icons/resume.svg" alt="">
+            </a>
+        </div>
+    </div>    
+{/if}

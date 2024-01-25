@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title>Vespertine</title>
 		%sveltekit.head%
@@ -10,20 +10,15 @@
 	<style>
 		@font-face {
 			font-family: "JetBrains Mono", monospace;
-			src: url("/fonts/JetBrainsMono-VariableFont_wght.ttf") format("ttf");
+			src: url("fonts/static/JetBrainsMono-Regular.ttf");
 			font-style: normal;
 		}
-		@font-face {
+		/* @font-face {
 			font-family: "JetBrains Mono", monospace;
-			src: url("static/fonts/JetBrainsMono-Bold.ttf") format("ttf");
+			src: url("fonts/static/JetBrainsMono-Bold.ttf");
 			font-style: normal;
 			font-weight: bold;
-		}
-
-		body {
-			background-color: #231F20;
-			margin: 0;
-		}
+		} */
 
 		:root {
 			--background: #231F20;
@@ -31,6 +26,49 @@
 			--verdigris:  #7EBDC2;
 			--vanilla:    #F3DFA2;
 			--linen:      #EFE6DD;    
+		}
+
+		.cardWrapper {
+			border-radius: 8px;
+			border: 4px solid var(--linen);
+			padding: 10px;
+			background-color: var(--background);
+			color: var(--linen);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+			flex: 1 1 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			align-content: flex-start;
+			flex-wrap: nowrap;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			font-family: "JetBrains Mono", monospace;
+		}
+
+
+		body {
+			background-image: linear-gradient(to bottom right, #231F20, #BB4430);
+			margin: 0;
+			scrollbar-width: thin; 
+  			scrollbar-color: var(--verdigris) var(--background); 
+			font-family: "JetBrains Mono", monospace;
+		}
+
+		::-webkit-scrollbar { 
+			width: 12px;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background-color: var(--verdigris);
+			border-radius: 6px;
+		}
+
+		::-webkit-scrollbar-track {
+			background-color: var(--background);
+			border-radius: 3px;
+			width: 12px;
 		}
 		
 	</style>

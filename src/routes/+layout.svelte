@@ -1,7 +1,6 @@
 <style global>
 
     .pageWrapper {
-        background: var(--background);
         display: flex;
         flex-direction: column;
         height: calc(100vh - 2em);
@@ -9,13 +8,12 @@
     }
 
     .bodyColumns {
-        background: var(--background);
         margin-top: 4px; 
         justify-content: space-between;
         display: flex;
         flex-direction: row;
         flex: 1;
-        height: 100%;
+        max-height: 92vh;
     }
     
     .navbar {
@@ -29,6 +27,11 @@
         flex: 1 0 90%;
         height: 100%;
     }
+
+    body {
+        font-family: "JetBrains Mono", monospace;
+    }
+    
 </style>
 
 <script lang="ts">

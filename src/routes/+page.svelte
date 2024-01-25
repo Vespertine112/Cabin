@@ -1,19 +1,4 @@
 <style>
-    .cardWrapper {
-        border-radius: 8px;
-        border: 4px solid var(--linen);
-        padding: 10px;
-        color: var(--linen);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        align-content: flex-start;
-        flex-wrap: nowrap;
-    }
-
     .profilePicWrapper {
         display: flex;
         justify-content: center;
@@ -30,10 +15,14 @@
 
 <script lang="ts">
     import { typewriter } from "$lib/transitions";
+    import { onDestroy, onMount } from "svelte";
     import { blur, fly } from "svelte/transition";
     import tippy, { type Props } from 'tippy.js';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/material.css';
+    import { updateTopbarName, readableTopbarName } from "$lib/stores";
+    
+    updateTopbarName("Brayden Hill")
 
     let content = 'Cold in Colorado!';
 
@@ -50,15 +39,27 @@
 		};
 	}
 
+    let show:boolean = false;
+    onMount(()=>{
+        show = true;
+    });
+    onDestroy(()=>{
+        show = false;
+    });
+
+    let text = "Welcome in! I'm a software developer with <strong>4 years</strong> of experience.";
+
 </script>
 
-<div transition:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
-    <h1 in:typewriter={{}}>Hi, I'm Brayden</h1>
+{#if show}
+    <div transition:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
+        <h1 in:typewriter={{}}>Hi, I'm Brayden</h1>
 
-    <div use:tooltip={{content, theme:"material", placement: "right"}} class="profilePicWrapper">
-        <!-- svelte-ignore a11y-img-redundant-alt -->
-        <img transition:blur={{amount:100, duration:1000}} src="/images/profile.jpg" class="profilePic" alt="Profile Picture">
-    </div>
+        <div use:tooltip={{content, theme:"material", placement: "right"}} class="profilePicWrapper">
+            <!-- svelte-ignore a11y-img-redundant-alt -->
+            <img transition:blur={{amount:100, duration:1000}} src="/images/profile.jpg" class="profilePic" alt="Profile Picture">
+        </div>
 
-    <p in:typewriter={{speed:5}}>I'm currently a software developer who loves all things learning, tinkering, and just about anything outdoors!</p>
-</div>
+        <p in:typewriter={{speed:5}}>{text}</p>
+    </div>    
+{/if}
