@@ -65,6 +65,7 @@
             width: 78vw;
             margin: 8px 0 0 0;
         }
+        
         .carouselWrapper {
           width: 100%;
           display: flex;
