@@ -18,17 +18,16 @@
     
     .navbar {
         display: flex;
-        flex: 1 0 10%;
         height: 100%;
-        width: -webkit-fill-available;
-
+        max-width: 15vw;        
     }
-
+    
     .slotted {
         display: flex;
-        flex: 1 0 90%;
         height: 100%;
         z-index: 0;
+        flex-wrap: 1 1;
+        width: -webkit-fill-available;
     }
 
     @media only screen and (max-width: 767px) {

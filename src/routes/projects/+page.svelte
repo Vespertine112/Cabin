@@ -43,16 +43,24 @@
       font-size: 1.2em;
       font-weight: bold;
     }
-  
-    .projectTechnologies {
+
+    .links {
       font-style: italic;
+      font-weight: bold;
+    }
+    
+    .projectTechnologies {
+      font-weight: bold;
       color: var(--accent-color);
       width: 100%;
     }
 
+    .lineLabel {
+      font-weight: bold;
+    }
+
     .projectTopper {
         font-family: "JetBrains Mono";
-        font-style: italic;
         width: 100%;
     }
 
@@ -146,7 +154,7 @@
     {#each projects as project}
       <div class="projectWrapper">
         <div class="projectTopper" transition:blur={blurOptions}>
-          <h2 class="projectHeading"><a class="links" href={project.url} target="_blank">{project.name}</a></h2>
+          <a class="links" href={project.url} target="_blank">{project.name}</a>
           <div class="projectTechnologies">Technologies: {project.technologies}</div>
           <div class="lineLabel">{project.date}</div>
         </div>

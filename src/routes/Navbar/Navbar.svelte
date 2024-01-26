@@ -43,6 +43,12 @@
     font-style: normal;
   }
 
+  .nav-link {
+    text-decoration: none;
+    display: block;
+    text-wrap: nowrap;
+  }
+
   .active > a{
     color: var(--verdigris);
     font-weight: bolder;
@@ -75,6 +81,10 @@
     .navbar {
       position: absolute;
     }
+
+    .navbar > ul > li {
+      font-size: smaller;
+    }
   }
 </style>
 
@@ -86,7 +96,7 @@
 
   export const navOptions = [
     { url: "/",           label: "Home"       },      
-    // { url: "/about",      label: "About"      },      
+    { url: "/about",      label: "About"      },      
     { url: "/experience", label: "Experience" },      
     { url: "/projects",   label: "Projects"   },      
     { url: "/blog",       label: "Blog"       },      
@@ -116,9 +126,9 @@
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
         <li class={intSelected==i ? "active" : ""} >
-            <a on:click={changeComponent} id={i.toString()} transition:fade|global={{delay:i*500}} href="{nav.url}">
-            <span class="link-arrow" >=></span> &#123;{nav.label}&#125;
-          </a>
+            <a on:click={changeComponent} id={i.toString()} class="nav-link" transition:fade|global={{delay:i*500}} href="{nav.url}">
+              <span class="link-arrow" >=></span> &#123;{nav.label}&#125;
+            </a>
         </li>
         <hr>
       {/each}

@@ -95,12 +95,12 @@
             <img transition:blur={{amount:100, duration:1000}} src="/images/profile/profile.jpg" class="profilePic" alt="Profile Picture">
         </div>
 
-        <p class="p-line" in:fly={{x:500, duration:2500}}>Welcome in! I'm a software developer with <strong>{(new Date().getFullYear()) - 2020} years</strong> of experience.</p>
-        <p class="p-line" in:fly={{x:-500, duration:2500}}>Currently, I work as a <strong>Full-Stack Developer</strong>, but I have an interest in all things computing. </p>
-        <p class="p-line" in:fly={{x:500, duration:2500}}>When I'm not writing code, I love to get outdoors, exercise, or fall down the rabbit hole on a fascinating topic! 
+        <p class="p-line" in:fly={{x:100, duration:2000}}>Welcome in! I'm a software developer with <strong>{(new Date().getFullYear()) - 2020} years</strong> of experience.</p>
+        <p class="p-line" in:fly={{x:-100, duration:2000}}>Currently, I work as a <strong>Full-Stack Developer</strong>, but I have an interest in all things computing. </p>
+        <p class="p-line" in:fly={{x:100, duration:2000}}>When I'm not writing code, I love to get outdoors, exercise, or fall down the rabbit hole on a fascinating topic! 
             <i><a class="links" href="https://en.wikipedia.org/wiki/The_Crystal_Palace" target="_blank">Crystal Palace, anyone?</a></i>
         </p>
-        <p class="p-line" in:fly={{x:-500, duration:2500}}>Feel free to contact me at any of the links above! I'd love to hear from you!</p>
+        <p class="p-line" in:fly={{x:-100, duration:2000}}>Feel free to contact me at any of the links above! I'd love to hear from you!</p>
 
         <div class="quoteBlock">
             <i>{quote.content} - <a href={author.url} class="links" use:tooltip={{content: author.bio, theme:"material", placement:"top" }} target="_blank">{quote.author}</a></i>

@@ -30,6 +30,15 @@
         width: 30vw;
     }
 
+    .links {
+        font-style: italic;
+        font-weight: bolder;
+    }
+
+    .lineLabel {
+        font-weight: bold;
+    }
+
     .experienceWrapper { 
         display: flex;
         flex-direction: column;
@@ -39,8 +48,6 @@
     }
 
     .experienceTime {
-        font-family: "JetBrains Mono";
-        font-style: italic;
         width: 100%;
     }
 
@@ -131,7 +138,7 @@
                     </div>
     
                     <div class="experienceTime">
-                        <div class="lineLabel"><a class="links" href={experience.url} target="_blank">{experience.name}</a></div>                
+                        <div class=""><a class="links" href={experience.url} target="_blank">{experience.name}</a></div>                
                         <div class="lineLabel">{experience.elapsedTime}</div>
                         <div class="lineLabel">{experience.jobTitle} - {experience.technologies}</div>                
                     </div>
