@@ -1,18 +1,4 @@
 <style>
-    .card {
-        border-radius: 8px; 
-        border: 4px solid var(--linen);
-        padding: 10px; 
-        color: var(--linen); 
-        box-shadow: var(--shadow);
-        flex: 1;
-    }
-
-    .companyLogo {
-        height: 5vh;
-        border-radius: 4px;
-    }
-
     hr {
         width: 100%;
     }
@@ -37,11 +23,14 @@
       width: 50vw;
       margin: 8px 0 0 0;
     }
-  
-    .projectHeading {
-      font-family: "JetBrains Mono";
-      font-size: 1.2em;
-      font-weight: bold;
+
+    .carouselWrapper {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
     }
 
     .links {
@@ -65,7 +54,7 @@
     }
 
     .carouselImage {
-      max-width: 50vw;
+      width: 100%;
     }
 
     @media only screen and (max-width: 767px) {
@@ -76,6 +65,14 @@
             width: 78vw;
             margin: 8px 0 0 0;
         }
+        .carouselWrapper {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-content: center;
+          align-items: center;
+        }
     }
 
   </style>
@@ -83,7 +80,7 @@
   <script lang="ts">
     // Import necessary modules and types
     import { typewriter } from "$lib/transitions";
-    import { blur, fly } from "svelte/transition";
+    import { blur, fly, scale } from "svelte/transition";
     import tippy from 'tippy.js';
     import 'tippy.js/dist/tippy.css';
     import 'tippy.js/themes/material.css';
@@ -93,8 +90,9 @@
     import Carousel from 'svelte-carousel';
     import { browser } from '$app/environment';
     import { updateTopbarName, readableTopbarName } from "$lib/stores";
+    import { quintOut } from "svelte/easing";
   
-    export let data: PageData;
+    // export let data: PageData;
   
     let show: boolean = false;
     let carousel:any; 
@@ -144,6 +142,11 @@
         description: "Worked on a team to create a high performance viewshed computation, running on multiple GPUs and CPUs across a clustered network. Designed and implemented the MPI control structure for the division of critical data across the network, and the accompanying distributed CPU approach. Created data visualizations and produced scaling reporting for the final program to demonstrate a 3600x increase in performance over single core.",
       }
     ];
+
+    $: revealImages = false;
+    setTimeout(() => {
+      revealImages = true;
+    }, 750);
   </script>
   
 {#if show}
@@ -162,27 +165,30 @@
         <hr class="mediumHr">
 
         {#if browser}
-          {#if project.images}
-              <Carousel
-              autoplay
-              autoplayDuration={5000}
-              autoplayProgressVisible
-              pauseOnFocus
-              swiping={true}
-              bind:this={carousel}
-              >
+          <div class="carouselWrapper">
+            {#if project.images && revealImages}
+                <Carousel
+                autoplay
+                autoplayDuration={5000}
+                autoplayProgressVisible
+                pauseOnFocus
+                swiping={true}
+                bind:this={carousel}
+                >
 
-                {#each project.images as image}
-                  <img class="carouselImage" src={image} alt="">
-                {/each}
-              </Carousel>
-          {/if}
+                  {#each project.images as image, i}
+                    <img class="carouselImage" in:scale|global={{delay:1000*i,  duration: 1000, easing: quintOut}} src={image} alt="">
+                  {/each}
+                </Carousel>
+            {/if}
 
-
-          {#if project.video}
+            
+            
+            {#if project.video}
             <!-- svelte-ignore a11y-media-has-caption -->
-            <video class="carouselImage" src={project.video} controls autoplay loop></video>
-          {/if}
+            <video class="carouselImage" src={project.video} controls loop autoplay></video>
+            {/if}
+          </div>
         {/if}
 
         <hr class="smallHr">

@@ -47,6 +47,15 @@
         margin: 8px 0 0 0;
     }
 
+    .carouselWrapper {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+
     .experienceTime {
         width: 100%;
     }
@@ -67,13 +76,21 @@
             width: 78vw;
             margin: 8px 0 0 0;
         }
+        .carouselWrapper{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+        }
     }
 
 </style>
 
 <script lang="ts">
     import { typewriter } from "$lib/transitions";
-    import { blur, fly } from "svelte/transition";
+    import { blur, fly, scale } from "svelte/transition";
     import tippy, { type Props } from 'tippy.js';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/material.css';
@@ -83,8 +100,9 @@
     import { updateTopbarName, readableTopbarName } from "$lib/stores";
     import Carousel from 'svelte-carousel';
     import { browser } from '$app/environment';
+    import { cubicInOut, cubicOut, quintIn, quintOut } from "svelte/easing";
 
-    export let data: PageData;
+    // export let data: PageData;
     let carousel:any; 
 
     let show: boolean = false;
@@ -126,6 +144,11 @@
             ],            
         },
     ]
+
+    $: revealImages = false;
+    setTimeout(() => {
+        revealImages = true;
+    }, 750);
 </script>
 
 {#if show}
@@ -148,23 +171,23 @@
                     </div>
                     <hr class="mediumHr">
 
-                    {#if browser}
-                        {#if experience.images}
-                            <Carousel
-                            autoplay
-                            autoplayDuration={5000}
-                            autoplayProgressVisible
-                            pauseOnFocus
-                            swiping={true}
-                            bind:this={carousel}
-                            >
-
-                            {#each experience.images as image}
-                                <img class="carouselImage" src={image} alt="">
-                            {/each}
-                            </Carousel>
-                        {/if}
-
+                    {#if browser && revealImages}
+                        <div class="carouselWrapper" in:scale|global={{duration: 1000, easing: quintOut}}>
+                            {#if experience.images}
+                                <Carousel
+                                autoplayDuration={5000}
+                                autoplayProgressVisible
+                                pauseOnFocus
+                                swiping={true}
+                                bind:this={carousel}
+                                >
+                                
+                                    {#each experience.images as image, i}
+                                        <img class="carouselImage" src={image} alt="">
+                                    {/each}
+                                </Carousel>
+                            {/if}
+                        </div>
                     {/if}
                     
                     <hr class="mediumHr">
