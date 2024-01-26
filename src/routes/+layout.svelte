@@ -19,15 +19,13 @@
     .navbar {
         display: flex;
         height: 100%;
-        max-width: 15vw;        
     }
     
     .slotted {
         display: flex;
         height: 100%;
         z-index: 0;
-        flex-wrap: 1 1;
-        width: -webkit-fill-available;
+        flex: 1;
     }
 
     @media only screen and (max-width: 767px) {
@@ -35,7 +33,6 @@
             display: flex;
             flex: 1 0 90%;
             max-height: 90vh;
-            width: -webkit-fill-available;
         }
         
         .navbar { 
