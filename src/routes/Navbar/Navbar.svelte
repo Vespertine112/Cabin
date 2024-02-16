@@ -47,12 +47,17 @@
     text-decoration: none;
     display: block;
     text-wrap: nowrap;
+    padding: 8px 15px 8px 0;
   }
 
   .active > a{
     color: var(--verdigris);
     font-weight: bolder;
     /* font-style: italic; */
+  }
+
+  .list-item {
+    margin: 0;
   }
 
   .open {
@@ -125,8 +130,8 @@
       {#each navOptions as nav, i}
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-        <li class={intSelected==i ? "active" : ""} >
-            <a on:click={changeComponent} id={i.toString()} class="nav-link" transition:fade|global={{delay:i*500}} href="{nav.url}">
+        <li class={intSelected==i ? "active list-item" : "list-item"} >
+            <a class="nav-link" on:click={changeComponent} id={i.toString()} transition:fade|global={{delay:i*500}} href="{nav.url}">
               <span class="link-arrow" >=></span> &#123;{nav.label}&#125;
             </a>
         </li>
