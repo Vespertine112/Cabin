@@ -143,7 +143,7 @@
                 <p class="p-line" in:fly={{x:100, duration:2000}} >I'm currently a software developer with {(new Date().getFullYear() - 2020)} years of professional experience, and many more in the learning phases.</p>
                 <p class="p-line" in:fly={{x:-100, duration:2000}} >I graduated from in <b>May 2024</b> with a 3.88 GPA. <b>B.S. Computer Science with a Mathematics Minor.</b></p>
                 <p class="p-line" in:fly={{x:100, duration:2000}} >I love to tinker and learn new technologies, with a current penchant for split ortholinear keyboards, like my Corne!</p>
-                <p class="p-line" in:fly={{x:-100, duration:2000}} >Grab a copy of my <a class="links" href="pdf/resume.pdf" target="_blank">current resume</a> here! </p>
+                <p class="p-line" in:fly={{x:-100, duration:2000}} >Grab a copy of my <a class="links" href="pdf/Resume.pdf" target="_blank">current resume</a> here! </p>
             </div>
     
             <!-- <div use:tooltip={{content, theme:"material", placement: "right"}}>
