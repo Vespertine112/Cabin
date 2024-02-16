@@ -99,7 +99,7 @@
     { url: "/about",      label: "About"      },      
     { url: "/experience", label: "Experience" },      
     { url: "/projects",   label: "Projects"   },      
-    { url: "/blog",       label: "Blog"       },      
+    // { url: "/blog",       label: "Blog"       },      
   ];
 
   export let open = false;

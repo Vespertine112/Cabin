@@ -58,6 +58,7 @@
     let open = false;
 
     $page.url
+
 </script>
 
 <div class="pageWrapper">

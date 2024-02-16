@@ -123,7 +123,7 @@
         description: "Designed a Machine Learning Pipeline & Models to predict powerlifting totals for competition lifts. The models are very highly performant (R² >= 0.97). Performed data cleaning and curating, optimizing for lowest feature space possible with performance. Implemented custom classification reporting and analysis to parse results."
       },
       {
-        name: "Frappuccino Shop",
+        name: "Dan's Frapuccino Paradise",
         url: "https://docs.google.com/presentation/d/1elEZDd05HZh93MPgyaXxibHc3Y2HYyfBIkBaPX2hfpk/edit?usp=sharing",
         technologies: "Typescript, Angular, Firebase Auth, MongoDB, Django",
         date: "Aug - Dec 2022",
@@ -156,7 +156,7 @@
     <hr>
 
     {#each projects as project}
-      <div class="projectWrapper">
+      <div class="projectWrapper" id={project.name}>
         <div class="projectTopper" transition:blur={blurOptions}>
           <a class="links" href={project.url} target="_blank">{project.name}</a>
           <div class="projectTechnologies">Technologies: {project.technologies}</div>

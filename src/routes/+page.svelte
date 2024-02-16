@@ -41,6 +41,7 @@
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/material.css';
     import { updateTopbarName, readableTopbarName } from "$lib/stores";
+    import { ForceRequestInit } from "$lib/types";
 
     let toolTipContent = 'Rocky Mountain High!';
     
@@ -69,7 +70,7 @@
     $: quote = {content: "", author: "", authorSlug: ""};
     $: author = {url: "", bio: "", description: ""};
     const getRandomInt = (min:number, max:number) => Math.floor(Math.random() * (max - min + 1)) + min;
-    fetch("https://api.quotable.io/quotes?tags=Technology|Creativity|Imagination|Science|Creativity")
+    fetch("https://api.quotable.io/quotes?tags=Technology|Creativity|Imagination|Science|Creativity", ForceRequestInit)
         .then(result=>result.json())
         .then(result => {
             quote = result.results[getRandomInt(0, result.results.length)];
@@ -83,7 +84,6 @@
         .catch(err => {
             console.warn(`Error fetching home page quote`, err);
         })
-    
 </script>
 
 {#if show}
