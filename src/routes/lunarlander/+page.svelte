@@ -163,6 +163,7 @@
 	import { writable } from 'svelte/store';
 	import { browser } from '$app/environment';
     import { topbarName, updateTopbarName } from '$lib/stores';
+    import { MusicManager } from '$lib/lunarlander/Music';
 
 	let show:boolean = false;
 	updateTopbarName("Lunar Lander");
@@ -215,9 +216,10 @@
 		show = true;
 		await tick();
 	
-		thrustSound.volume = 0.2;
-		let music: Music = {backgroundMusic, thrustSound, explosionSound,
-		levelWinSound}; 
+		thrustSound.volume = 0.3;
+		let music: Music = {backgroundMusic, thrustSound, explosionSound, levelWinSound}; 	
+		MusicManager.getInstance().addMusic(music);
+
 		stateMachine.initalize(
 			lander, 
 			canvas,
@@ -260,12 +262,13 @@
 		show = false;
 	})
 
-	function updateHighScores() {
-        if (lander.playerScore == 0) return;
-		highScores.push({ name: playerName, score: lander.playerScore });
-		highScores.sort((a, b) => b.score - a.score);
-	
-		localStorage.setItem('lunarlander.highScores', JSON.stringify(highScores));
+	function updateHighScores(justGoHome: boolean = false) {
+        if (!justGoHome){
+			highScores.push({ name: playerName, score: lander.playerScore });
+			highScores.sort((a, b) => b.score - a.score);
+
+			localStorage.setItem('lunarlander.highScores', JSON.stringify(highScores));
+		}
 
         lander.playerScore = 0;
 		stateMachine.reset();
@@ -337,7 +340,9 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
 					<p>Score: {lander.playerScore}</p>
 					<label for="playerNameInput">Enter your name</label>
 					<input type="text" bind:value={playerName} id="playerNameInput" />
-					<button class="modeButton" on:click={updateHighScores}>Submit Score</button>
+					<button class="modeButton" on:click={()=> updateHighScores()}>Submit Score</button>
+					<button class="modeButton"
+					on:click={()=>updateHighScores(true)}>Main Menu</button>
 				</div>
 			{/if}
             
@@ -352,7 +357,7 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
 
     <!-- Need to move this to the WebAudio API & make a manager at some point... -->
     <audio id="backgroundMusic" loop bind:this={backgroundMusic}>
-        <source src="/lunarlander/music/adrift.mp3" type="audio/mpeg" />
+        <source src="/lunarlander/music/ClearSkies.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
     </audio>
     <audio id="thrustSound"  bind:this={thrustSound}>

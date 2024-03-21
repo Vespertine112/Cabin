@@ -7,7 +7,7 @@ import { HighScoresState } from "./HighScoresState";
 import { LevelSelectState } from "./LevelSelectState";
 import { CustomControlsState } from "./CustomControlsState";
 import type InputManager from "$lib/lunarlander/inputManager";
-import type { Music } from "$lib/lunarlander";
+import type { Music } from "../music";
 import { CreditsState } from "./CreditsState";
 
 export enum GameStateEnum {
@@ -62,6 +62,7 @@ export class StateMachine {
 
     update(elapsedTime: number) {
         let nextState: GameStateEnum = this.currentState.processInput(elapsedTime);
+
         if (this.resettingFlag) {
             nextState = GameStateEnum.MainMenuState;
             this.resettingFlag = false;

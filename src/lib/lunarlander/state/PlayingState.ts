@@ -4,10 +4,11 @@ import Sprite from "$lib/lunarlander/entites/sprite";
 import { GameStateEnum } from "./stateMachine";
 import type { State } from "./state";
 import type InputManager from "$lib/lunarlander/inputManager";
-import { fadeOutMusic, type Music } from "$lib/lunarlander";
+import { type Music } from "../music";
 import { ParticleSystem } from "$lib/lunarlander/particles/particleSystem";
 import { Random } from "$lib/lunarlander/random";
 import { CustomCommands } from "$lib/lunarlander/inputManager";
+import { MusicManager } from "../Music";
 
 export class PlayingState implements State {
     game: Game;
@@ -257,13 +258,13 @@ export class PlayingState implements State {
                     this.thrustParticleSystem.generateParticles = true;
                     if (this.game.gameState == GameStatusEnum.Playing) this.landerEntity.setState("thrust");
                 } else {
-                    fadeOutMusic(this.music.thrustSound, 1000, 0.2);
+                    MusicManager.getInstance().fadeOutMusic(this.music.thrustSound, 1000, 0.3);
                     this.thrustParticleSystem.generateParticles = false;
                     if (this.game.gameState == GameStatusEnum.Playing) this.landerEntity.setState("std");
                 }
             },
             () => {
-                fadeOutMusic(this.music.thrustSound, 1000, 0.2);
+                MusicManager.getInstance().fadeOutMusic(this.music.thrustSound, 1000, 0.3);
                 this.thrustParticleSystem.generateParticles = false;
                 if (this.game.gameState == GameStatusEnum.Playing) this.landerEntity.setState("std");
             },

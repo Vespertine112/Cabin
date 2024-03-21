@@ -100,9 +100,9 @@ export let levels: Level[] = [
         surfaceColor: "#B6967A",
         landStripWidth: 10,
         varience: 0.1,
-        fuel: 500,
+        fuel: 800,
         gravity: new Vector(0, -0.62),
-        thrustMagnitude: 0.4,
+        thrustMagnitude: 0.45,
         background: "/lunarlander/backgrounds/level_one_background.png",
     },
     {
@@ -113,7 +113,7 @@ export let levels: Level[] = [
         varience: 0.1,
         fuel: 400,
         gravity: new Vector(0, -0.146),
-        thrustMagnitude: 0.2,
+        thrustMagnitude: 0.4,
         background: "/lunarlander/backgrounds/level_two_background.png",
     },
     {
@@ -122,9 +122,9 @@ export let levels: Level[] = [
         landStripWidth: 7,
         surfaceColor: "#878AA1",
         varience: 0.15,
-        fuel: 300,
+        fuel: 400,
         gravity: new Vector(0, -1.625),
-        thrustMagnitude: 1,
+        thrustMagnitude: 1.2,
         background: "/lunarlander/backgrounds/level_three_background.png",
     },
     {
