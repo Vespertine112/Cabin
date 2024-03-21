@@ -87,7 +87,7 @@ export class PlayingState implements State {
 
     private regularGameUpdate(elapsedTime: number) {
         this.game.update(elapsedTime);
-        this.thrustParticleSystem.update(elapsedTime);
+        this.thrustParticleSystem.update(elapsedTime, 2);
 
         // Internal Game State Transitions!
         if (this.game.gameState == GameStatusEnum.Won) {
@@ -100,7 +100,7 @@ export class PlayingState implements State {
         if (this.game.gameState == GameStatusEnum.Lost) {
             this.music.explosionSound.play();
             this.internalUpdate = this.gameLostUpdate;
-            this.explodeParticleSystem.turnOffAfter(175);
+            this.explodeParticleSystem.turnOffAfter(300);
         }
     }
 
@@ -194,7 +194,7 @@ export class PlayingState implements State {
             const x = Math.cos(angleInRadians);
             const y = Math.sin(angleInRadians);
 
-            return new Vector(y, -x).mult(Random.nextRandomBetween(2, 4));
+            return new Vector(y, -x).mult(Random.nextRandomBetween(2, 5));
         };
 
         // Assign the thrustMomentum callback to both particle systems
@@ -205,7 +205,7 @@ export class PlayingState implements State {
             thrustMomentum,
         );
         this.explodeParticleSystem = new ParticleSystem(this.canvas, this.game.landerEntity.position, true, () =>
-            Random.nextCircleVector().mult(Random.nextRandomBetween(2, 4)),
+            Random.nextCircleVector().mult(Random.nextRandomBetween(3, 6)),
         );
     }
 
