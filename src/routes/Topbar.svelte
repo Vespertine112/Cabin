@@ -102,9 +102,11 @@
             <Hamburger bind:open={sidebar}></Hamburger>
         </div>
 
+		<!-- A wee little easter egg lol -->
         {#key displayName}
-            <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div class="pageName" on:mouseenter={vesperizeName} on:mouseleave={regularName} in:typewriter|global={{speed:1}}>{displayName}</div>
+			<a href="/lunarlander" style="color: var(--linen); text-decoration: none;">
+				<div class="pageName" on:mouseenter={vesperizeName} on:mouseleave={regularName} in:typewriter|global={{speed:1}}>{displayName}</div>
+			</a>
         {/key}
 
         <div class="menu">
