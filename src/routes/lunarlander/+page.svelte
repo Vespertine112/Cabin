@@ -23,7 +23,7 @@
             background-size: cover;
 
 			padding: unset !important;
-			overflow-y: unset !important;
+			overflow-y: hidden !important;
 			color: var(--llbackground) !important;
         }
 
@@ -136,10 +136,20 @@
             border-bottom: 1px solid var(--termGreen);
         }
 
-
-
         .badLands {
             color: white;
+        }
+
+        @media only screen and (max-width: 767px) {
+			.displayNone {
+				display: none;
+			}
+			table {
+				border-spacing: 0px 0rem;
+			}
+			.displayPane > h1 {
+				font-size: 1rem;
+			}
         }
     </style>
 
@@ -294,7 +304,7 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
             bind:clientHeight={canvasHeight}
             >
             <div class={lander.gameState != GameStatusEnum.Idle? "HUD" : "hidden"}>
-                <span>HUD</span>
+                <span class="displayNone">HUD</span>
                 <hr style="width:100%; color: var(--termGreen);">
                 <div >
                     <table class="table">
@@ -315,17 +325,17 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
                             <td>{lander.landerEntity?.direction ?? 0}</td>
                             <td>&deg;</td>
                         </tr>
-                        <tr >
+                        <tr class="displayNone">
                             <td>Time:</td>
                             <td>{playTime}</td>
                             <td>sec</td>
                         </tr>
-                        <tr >
+                        <tr class="displayNone">
                             <td>Score:</td>
                             <td>{lander.playerScore}</td>
                             <td>sec</td>
                         </tr>
-                        <tr >
+                        <tr class="displayNone" >
                             <td>FPS:</td>
                             <td>{fps}</td>
                             <td>sec</td>
