@@ -25,6 +25,7 @@ export class CreditsState implements State {
         { source: "Zapsplat.com", description: "Ship Thrust Sound" },
         { source: "SoundBible.com", description: "Ship Explosion sound" },
         { source: "Pixabay.com", description: "Success Sound" },
+        { source: "Scott Buckley", description: "Main Theme: Adrift Among Infinite Stars" },
     ];
 
     constructor(canvas: HTMLCanvasElement, inputManager: InputManager) {

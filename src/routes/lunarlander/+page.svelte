@@ -5,17 +5,11 @@
             font-style: normal;
         }
 
-        .silkscreen-bold {
-            font-family: "Silkscreen", sans-serif;
-            font-weight: 700;
-            font-style: normal;
-        }
-
         :root {
-            --background: #070f2b;
-            --c2: #1b1a55;
-            --c3: #535c91;
-            --c1: #9290c3;
+            --llbackground: #070f2b;
+            --llc2: #1b1a55;
+            --llc3: #535c91;
+            --llc1: #9290c3;
             --termGreen: #43e121;
             --pluto: #f3caa3;
             --mars: #d0d4db;
@@ -23,22 +17,14 @@
             --moon: #a3a7c2;
         }
 
-        body {
-            background-color: var(--background);
-        }
 
-        .mainWrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            width: 100%;
-            height: 100%;
-            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.8);
-
+        .cardWrapper {
             background-image: url("/lunarlander/backgrounds/main_background.png");
             background-size: cover;
+
+			padding: unset !important;
+			overflow-y: unset !important;
+			color: var(--llbackground) !important;
         }
 
         .paneWrapper {
@@ -51,7 +37,7 @@
 
         .header {
             width: 100%;
-            background-color: var(--c1);
+            background-color: var(--llc1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -61,7 +47,7 @@
 
         .footer {
             width: 100%;
-            background-color: var(--c1);
+            background-color: var(--llc1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -71,55 +57,10 @@
             flex-wrap: nowrap;
             flex: 1 0 auto;
         }
-
-        .controlPane {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 4px solid var(--c2);
-            padding: 4px;
-            flex: 1 0;
-            justify-content: flex-start;
-            align-content: center;
-            flex-wrap: nowrap;
-        }
-
-        .controlPane > h1 {
-            font-size: large;
-        }
-
-        .scorePane {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 4px solid var(--c2);
-            padding: 4px;
-            flex: 1 0;
-            justify-content: flex-start;
-            align-content: center;
-            flex-wrap: nowrap;
-        }
-
-        .scorePane > h1 {
-            font-size: large;
-        }
-
+       
         .displayPane {
             position: absolute;
             display: flex;
-            border: 4px solid var(--c2);
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-content: center;
-            align-items: center;
-            justify-content: center;
-            width: inherit;
-            height: inherit;
-        }
-        .renderPane {
-            position: relative;
-            display: flex;
-            border: 4px solid var(--c2);
             flex-direction: column;
             flex-wrap: nowrap;
             align-content: center;
@@ -129,75 +70,39 @@
             height: 100%;
         }
 
-        #renderCanvas {
-            /* backdrop-filter: blur(3px) drop-shadow(20px 40px 12px black); */
-        }
+        .renderPane {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: nowrap;
+			align-content: center;
+			align-items: center;
+			justify-content: center;
+			width:100%;
+		}
 
+        
         .losepane {
             backdrop-filter: blur(2px) brightness(0.5);
             color: var(--termGreen);
         }
 
-        .winpane {
-            color: var(--termGreen);
-        }
-
+        
         .modeButton {
             border-radius: 4px;
             box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
             margin: 20px 0 20px 0;
-            background-color: var(--c3);
-            color: var(--background);
+            background-color: var(--llc3);
+            color: var(--llbackground);
             font-size: large;
             padding: 4px 12px 4px 12px;
         }
 
-        .h1-bkgrd {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: var(--termGreen);
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-self: center;
-            width: 80%;
-            border-radius: 8px;
-            align-items: center;
-        }
-
-        .glow {
-            text-shadow:
-                1px 1px 2px var(--background),
-                0 0 1em var(--c3),
-                0 0 0.2em var(--c3);
-        }
-
-        .scores {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: var(--background);
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-self: center;
-            width: 80%;
-            max-height: 60vh;
-            border-radius: 8px;
-            align-items: center;
-            overflow-y: scroll;
-        }
-
+       
+        
         .hidden {
             display: none;
         }
 
-        #helpButton {
-            position: absolute;
-            right: 8px;
-            bottom: 8px;
-            border-radius: 4px;
-            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.8);
-            background-color: var(--c3);
-            color: var(--background);
-        }
 
         .HUD {
             position: absolute;
@@ -231,9 +136,7 @@
             border-bottom: 1px solid var(--termGreen);
         }
 
-        .safeLand {
-            color: var(--termGreen);
-        }
+
 
         .badLands {
             color: white;
@@ -241,7 +144,7 @@
     </style>
 
 <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onDestroy, onMount, tick } from 'svelte';
     import { Game, Vector, type Level, levels, GameStatusEnum} from '$lib/lunarlander/gameTypes';
     import InputManager from '$lib/lunarlander/inputManager';
     import { fade, fly, blur } from 'svelte/transition';
@@ -249,14 +152,10 @@
 	import type { Music } from '$lib/lunarlander';
 	import { writable } from 'svelte/store';
 	import { browser } from '$app/environment';
+    import { topbarName, updateTopbarName } from '$lib/stores';
 
-
-    /**
-     * Brayden Hill - A02287193 - hillbgh@gmail.com
-    */
-
-    // TODO: Watch the lecture
-    // TODO: Build all Menuing!
+	let show:boolean = false;
+	updateTopbarName("Lunar Lander");
 
     $: lander = new Game();
     $: canvasWidth = 1000;
@@ -290,6 +189,9 @@
 
     let lastTimestamp = performance.now();
 	let frameCounter: number =0; 
+	
+
+	
 
 	let highScores: { name: string, score: number}[] = [];
 	if (browser){
@@ -299,7 +201,10 @@
 		}
 	}
 
-    onMount(() => {
+    onMount(async () => {
+		show = true;
+		await tick();
+
 		thrustSound.volume = 0.2;
 		let music: Music = {backgroundMusic, thrustSound, explosionSound,
 		levelWinSound}; 
@@ -342,6 +247,10 @@
         gameLoop(performance.now());
     })
 
+	onDestroy(()=>{
+		show = false;
+	})
+
 	function updateHighScores() {
         if (lander.playerScore == 0) return;
 		highScores.push({ name: playerName, score: lander.playerScore });
@@ -369,7 +278,9 @@
 <svelte:window on:keydown={keyPressHandler} on:keyup={keyReleaseHandler}
 on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
 
-<div class="mainWrapper silkscreen-regular" style="background-image: url({lander?.level?.background
+{#if show}
+
+<div class="cardWrapper silkscreen-regular" transition:fly={{y:50, x:50, duration:1000}} style="background-image: url({lander?.level?.background
 ?? '/lunarlander/backgrounds/main_background.png'});" >
     <div class="header">
         <h1>Lunar Lander</h1>
@@ -438,11 +349,10 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
     </div>
 
     <div class="footer">
-        <span>Created for CS 5410.</span>
-        <span>Brayden Hill - A02287193 - hillbgh@gmail.com</span>
+        <span>Brayden Hill - hillbgh@gmail.com</span>
     </div>
 
-    <!-- Need to move this to the WebAudio API at some point... -->
+    <!-- Need to move this to the WebAudio API & make a manager at some point... -->
     <audio id="backgroundMusic" loop bind:this={backgroundMusic}>
         <source src="/lunarlander/music/adrift.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
@@ -460,3 +370,4 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
         Your browser does not support the audio element.
     </audio>
 </div>
+{/if}
