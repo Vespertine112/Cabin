@@ -176,11 +176,11 @@
 
 	let frameTimer = 0;
 	$: {
-	if (playTime == frameTimer + 1){
-	  fps = frameCounter;
-	  frameCounter = 0;
-	  frameTimer = playTime;
-	}
+		if (playTime == frameTimer + 1){
+		  fps = frameCounter;
+		  frameCounter = 0;
+		  frameTimer = playTime;
+		}
 	}
 
 	const inputManager: InputManager = new InputManager();
@@ -191,6 +191,7 @@
 	const stateMachine = new StateMachine();
 
     let canvas:HTMLCanvasElement;
+	let wrapperDiv: HTMLDivElement;
 
     let backgroundMusic: HTMLAudioElement;
     let thrustSound: HTMLAudioElement;
@@ -200,10 +201,9 @@
     let lastTimestamp = performance.now();
 	let frameCounter: number =0; 
 	
-
-	
-
 	let highScores: { name: string, score: number}[] = [];
+
+	// Grab the stored scores
 	if (browser){
 		const storedHighScores:any = localStorage.getItem('lunarlander.highScores');
 		if (storedHighScores) {
@@ -211,10 +211,10 @@
 		}
 	}
 
-    onMount(async () => {
+	onMount(async () => {
 		show = true;
 		await tick();
-
+	
 		thrustSound.volume = 0.2;
 		let music: Music = {backgroundMusic, thrustSound, explosionSound,
 		levelWinSound}; 
@@ -226,14 +226,13 @@
 			highScores
 		);
 
-        function update(elapsedTime: number) {
-			// Allows the canvas to dynamically size on *any* window change 
-			if (canvas){ 
-				canvas.width = canvasWidth;
-				canvas.height = canvasHeight
-			}
-
+        async function update(elapsedTime: number) {
 			stateMachine.update(elapsedTime);
+
+			if (canvas){
+				canvas.width = canvasWidth;
+				canvas.height = canvasHeight;
+			}
 
             // This is redundant, but we have to echo assignment to get svelte to pick reactivity changes!!
             lander = lander;
@@ -271,18 +270,6 @@
         lander.playerScore = 0;
 		stateMachine.reset();
     }
-	
-	let countdownNumbers = writable([3, 2, 1]);
-	let countdownInterval = setInterval(() => {
-		countdownNumbers.update(numbers => {
-			if (numbers.length > 0) {
-				return numbers.slice(0, numbers.length - 1);
-			} else {
-				clearInterval(countdownInterval);
-				return [];
-			}
-		});
-	}, 1000);
 </script>
 
 <svelte:window on:keydown={keyPressHandler} on:keyup={keyReleaseHandler}
@@ -291,17 +278,16 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
 {#if show}
 
 <div class="cardWrapper silkscreen-regular" transition:fly={{y:50, x:50, duration:1000}} style="background-image: url({lander?.level?.background
-?? '/lunarlander/backgrounds/main_background.png'});" >
+?? '/lunarlander/backgrounds/main_background.png'});">
     <div class="header">
         <h1>Lunar Lander</h1>
-
     </div>
-    <div class="paneWrapper">
+
+    <div class="paneWrapper" bind:clientWidth={canvasWidth}
+	bind:clientHeight={canvasHeight}>
         <div
             in:fly={{ y: 100, duration: 1000 }}
             class={true ? 'renderPane' : 'hidden renderPane'}
-            bind:clientWidth={canvasWidth}
-            bind:clientHeight={canvasHeight}
             >
             <div class={lander.gameState != GameStatusEnum.Idle? "HUD" : "hidden"}>
                 <span class="displayNone">HUD</span>
@@ -343,6 +329,7 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
                     </table>
                 </div>
             </div>
+
 			{#if lander.gameState == GameStatusEnum.Lost}
 				<div class="displayPane losepane" in:blur={{ amount: 10, duration: 1500 }}>
 					<h1>You can't park there!!</h1>
@@ -353,7 +340,8 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
 					<button class="modeButton" on:click={updateHighScores}>Submit Score</button>
 				</div>
 			{/if}
-            <canvas id="renderCanvas" bind:this={canvas} />
+            
+			<canvas id="renderCanvas" style="width: 100%; height: 100%;" bind:this={canvas} />
         </div>
 
     </div>
