@@ -165,6 +165,9 @@
     import { topbarName, updateTopbarName } from '$lib/stores';
     import { MusicManager } from '$lib/lunarlander/Music';
 
+	// TODO: It would be cool to have a trajectory line mapped to a custom
+	// key...
+
 	let show:boolean = false;
 	updateTopbarName("Lunar Lander");
 

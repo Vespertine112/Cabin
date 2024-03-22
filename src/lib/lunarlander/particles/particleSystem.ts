@@ -10,6 +10,8 @@ export class ParticleSystem {
     private canvas: HTMLCanvasElement;
     private momentumGenCallback: () => Vector = () => new Vector(Random.nextGaussian(), Random.nextGaussian());
     private offAfterFlag: boolean = false;
+    private numOfParticles: number = 0;
+    private dpiScaledParticleSize: number;
 
     position: Position; // NOTE: Represents the position of the system. This will dyamically change! Most likely the 'live' position of another entity!
     generateParticles: boolean = false;
@@ -25,13 +27,18 @@ export class ParticleSystem {
         this.position = position;
         this.generateParticles = generateParticles ?? false;
         this.momentumGenCallback = momentumGenCallback ?? this.momentumGenCallback;
+
+        // NOTE: Need to re-work this. Too slow for each computation but doesn't
+        // account for canvas size changes.
+        this.dpiScaledParticleSize = Math.sqrt(this.canvas.width * this.canvas.height) * 0.005;
     }
 
     /*
      * Creates 'n' particles
      */
     createAndAddParticles(n: number) {
-        let size = Random.nextGaussian(8, 1);
+        let size = Math.abs(Random.nextGaussian(this.dpiScaledParticleSize, 1.3));
+        this.numOfParticles += n;
 
         for (let index = 0; index < n; index++) {
             let entity = new Entity(
@@ -61,6 +68,11 @@ export class ParticleSystem {
             particle.timeAlive += elapsedTime;
             particle.position = particle.position.fromVector(particle.momentum);
 
+            let particleDead = particle.timeAlive > particle.lifeLength;
+            if (particleDead) {
+                this.numOfParticles -= 1;
+            }
+
             return particle.timeAlive < particle.lifeLength;
         });
 
@@ -77,7 +89,7 @@ export class ParticleSystem {
 
     render() {
         const ctx = this.canvas.getContext("2d")!;
-        ctx.shadowColor = "rgba(0, 0, 0, 0.9)";
+        ctx.shadowColor = "rgba(0, 0, 0, 1)";
         ctx.shadowBlur = 10;
         ctx.shadowOffsetX = 5;
         ctx.shadowOffsetY = 5;
@@ -85,11 +97,12 @@ export class ParticleSystem {
         // Draw circles for each particle
         for (let idx = 0; idx < this.particles.length; idx++) {
             const particle = this.particles[idx];
+
             let color = "rgba(255, 0, 0, 0.5)";
             if (particle.color) color = particle.color;
 
             ctx.beginPath();
-            ctx.arc(particle.position.x, particle.position.y, particle.width / 2, 0, Math.PI * 2);
+            ctx.arc(particle.position.x, particle.position.y, particle.width! / 2, 0, Math.PI * 2);
             ctx.fillStyle = color; // Adjust color and transparency as needed
             ctx.fill();
             ctx.closePath();
@@ -119,5 +132,9 @@ export class ParticleSystem {
      */
     updateSystemPosition(position: Position) {
         this.position = position;
+    }
+
+    getNumOfParticles(): number {
+        return this.numOfParticles;
     }
 }

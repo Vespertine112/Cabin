@@ -258,7 +258,6 @@ export class PlayingState implements State {
                     this.thrustParticleSystem.generateParticles = true;
                     if (this.game.gameState == GameStatusEnum.Playing) this.landerEntity.setState("thrust");
                 } else {
-                    MusicManager.getInstance().fadeOutMusic(this.music.thrustSound, 1000, 0.3);
                     this.thrustParticleSystem.generateParticles = false;
                     if (this.game.gameState == GameStatusEnum.Playing) this.landerEntity.setState("std");
                 }
