@@ -220,6 +220,7 @@
 		await tick();
 	
 		thrustSound.volume = 0.3;
+		backgroundMusic.volume = 0.65;
 		let music: Music = {backgroundMusic, thrustSound, explosionSound, levelWinSound}; 	
 		MusicManager.getInstance().addMusic(music);
 
