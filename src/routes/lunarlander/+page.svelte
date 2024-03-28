@@ -155,18 +155,17 @@
 
 <script lang="ts">
     import { onDestroy, onMount, tick } from 'svelte';
-    import { Game, Vector, type Level, levels, GameStatusEnum} from '$lib/lunarlander/gameTypes';
+    import { Game, GameStatusEnum} from '$lib/lunarlander/gameTypes';
     import InputManager from '$lib/lunarlander/inputManager';
-    import { fade, fly, blur } from 'svelte/transition';
-	import { GameStateEnum, StateMachine } from '$lib/lunarlander/state/stateMachine';
-	import type { Music } from '$lib/lunarlander';
-	import { writable } from 'svelte/store';
+    import {  fly, blur } from 'svelte/transition';
+	import {  StateMachine } from '$lib/lunarlander/state/stateMachine';
+	import 'tippy.js/dist/tippy.css';
+	import 'tippy.js/themes/material.css';
 	import { browser } from '$app/environment';
-    import { topbarName, updateTopbarName } from '$lib/stores';
-    import { MusicManager } from '$lib/lunarlander/Music';
+    import { updateTopbarName } from '$lib/stores';
+    import { MusicManager, type Music } from '$lib/lunarlander/Music';
 
-	// TODO: It would be cool to have a trajectory line mapped to a custom
-	// key...
+	// TODO: It would be cool to have a trajectory line mapped to a custom key...
 
 	let show:boolean = false;
 	updateTopbarName("Lunar Lander");

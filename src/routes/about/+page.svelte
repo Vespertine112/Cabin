@@ -46,6 +46,13 @@
         padding: 0 1rem 0 1rem;
     }
 
+
+	.corne{
+		width: 80%;
+		box-shadow: unset !important;
+		padding: unset !important;
+	}
+
     @media only screen and (max-width: 767px) {
         .aboutWrapper { 
             display: flex;
@@ -145,7 +152,10 @@
 				from Utah State University in <b>May 2024</b> with a <b>B.S.
 				Computer Science & Mathematics Minor.</b></p>
                 <p class="p-line" in:fly={{x:100, duration:2000}} >I love to tinker and learn new technologies, with a current penchant for split ortholinear keyboards, like my Corne!</p>
-                <p class="p-line" in:fly={{x:-100, duration:2000}} >Grab a copy of my <a class="links" href="pdf/Resume.pdf" target="_blank">current resume</a> here! </p>
+
+				<img src="images/about/corne.jpg" alt="" class="cardWrapper corne">
+                
+				<p class="p-line" in:fly={{x:-100, duration:2000}} >Grab a copy of my <a class="links" href="pdf/Resume.pdf" target="_blank">current resume</a> here! </p>
             </div>
     
             <!-- <div use:tooltip={{content, theme:"material", placement: "right"}}>
