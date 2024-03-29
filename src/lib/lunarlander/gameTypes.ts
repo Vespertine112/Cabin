@@ -288,15 +288,15 @@ export class Game {
     }
 
     private updateLanderPositionAndMomentum(elapsedTime: number) {
-        let gravityAcceleration = new Vector(
-            (this.gravity.x * elapsedTime) / 200,
-            (this.gravity.y * elapsedTime) / 200,
-        );
+        // HACK: Look, 180 & 2 are magic numbers. Thin air, yadda yadda.
+        let adjustedTime = elapsedTime / 180;
+
+        let gravityAcceleration = new Vector(this.gravity.x * adjustedTime, this.gravity.y * adjustedTime);
 
         this.landerEntity.momentum.add(gravityAcceleration);
 
-        this.landerEntity.position.x += (this.landerEntity.momentum.x * elapsedTime) / 200;
-        this.landerEntity.position.y += (this.landerEntity.momentum.y * elapsedTime) / 200;
+        this.landerEntity.position.x += this.landerEntity.momentum.x * adjustedTime;
+        this.landerEntity.position.y += this.landerEntity.momentum.y * adjustedTime;
 
         this.landerSpeed = this.landerEntity.momentum.getMagnitude() / 2;
     }
