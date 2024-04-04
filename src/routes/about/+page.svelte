@@ -155,14 +155,13 @@
 
 				<img src="images/about/corne.jpg" alt="" class="cardWrapper corne">
                 
-				<p class="p-line" in:fly={{x:-100, duration:2000}} >Grab a copy of my <a class="links" href="pdf/Resume.pdf" target="_blank">current resume</a> here! </p>
+				<p class="p-line" in:fly={{x:-100, duration:2000}} >Grab a copy of my <a class="links" href="pdf/Resume.pdf" target="_blank">current resume</a></p>
+				
+				<hr style="width: 100%">
+
+				<p>I built this site with Svelte, you can check out the <a class="links" href="https://github.com/Vespertine112/Cabin" target = "_blank">public repo</a>!</p>
             </div>
     
-            <!-- <div use:tooltip={{content, theme:"material", placement: "right"}}>
-                <a href="https://drive.google.com/file/d/1laEwku355kUeae-_aoF442zvMpOCNZfe/view?usp=sharing" target="_blank">
-                    <img class="resume" src="/icons/resume.svg" alt="">
-                </a>
-            </div> -->
         </div>
     </div>    
 {/if}

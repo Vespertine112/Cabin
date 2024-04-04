@@ -95,9 +95,10 @@
 
 <script lang="ts">
 	import { page } from "$app/stores";
-  import { typewriter } from "$lib/transitions";
+	import { typewriter } from "$lib/transitions";
 	import { onMount } from "svelte";
-  import { fly, fade } from "svelte/transition";
+	import { fly, fade } from "svelte/transition";
+
 
   export const navOptions = [
     { url: "/",           label: "Home"       },      
@@ -113,6 +114,9 @@
 
   onMount(()=>{
     show = true;
+		if (urlsToHideNavbar.includes($page.route.id)){	
+			show = false;
+		} 
   });
 
   let intSelected:number = navOptions.findIndex(option => option.url == $page.route.id);    
@@ -121,6 +125,7 @@
     intSelected = event.srcElement.id;
     open = false;
   }
+
 
 </script>
 

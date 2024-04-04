@@ -74,6 +74,7 @@ declare module '$env/static/private' {
 	export const ALACRITTY_SOCKET: string;
 	export const npm_lifecycle_script: string;
 	export const npm_config_npm_version: string;
+	export const MAKEFLAGS: string;
 	export const XDG_SESSION_CLASS: string;
 	export const LC_IDENTIFICATION: string;
 	export const TERM: string;
@@ -195,6 +196,7 @@ declare module '$env/dynamic/private' {
 		ALACRITTY_SOCKET: string;
 		npm_lifecycle_script: string;
 		npm_config_npm_version: string;
+		MAKEFLAGS: string;
 		XDG_SESSION_CLASS: string;
 		LC_IDENTIFICATION: string;
 		TERM: string;

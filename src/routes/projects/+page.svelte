@@ -109,9 +109,23 @@
 
     const projects = [
       {
+        name: "LunarLander",
+        url: "/lunarlander",
+        technologies: "Svelte, Typescript, State Machines, etc",
+		newTarget: false,
+        date: "Feb 2024",
+        images: [
+          "images/lunarlander/MainMenu.png",
+          "images/lunarlander/Level_Select.png",
+          "images/lunarlander/Playing.png",
+        ],
+        description: "Built a lunarlander clone from scratch with typescript, and svelte. It has custom particle systems & game mechanics, customizable controls, realistic gravity, and more!"
+      },
+      {
         name: "OpenLift",
         url: "https://github.com/Vespertine112/OpenLift",
         technologies: "Python, PyTorch, Pandas, Numpy, etc",
+		newTarget: true,
         date: "Nov 2023",
         images: [
           "images/projects/Bench_Txt.png",
@@ -126,6 +140,7 @@
         name: "Dan's Frapuccino Paradise",
         url: "https://docs.google.com/presentation/d/1elEZDd05HZh93MPgyaXxibHc3Y2HYyfBIkBaPX2hfpk/edit?usp=sharing",
         technologies: "Typescript, Angular, Firebase Auth, MongoDB, Django",
+		newTarget: true,
         date: "Aug - Dec 2022",
         images: [
           "/images/projects/frap2.png",
@@ -138,6 +153,7 @@
         name: "High Performance Viewshed Computation",
         url: "",
         technologies: "C++, MPI, CUDA, OpenMP",
+		newTarget: true,
         date: "Dec 2022",
         video: "images/projects/viewshed.mp4",
         description: "Worked on a team to create a high performance viewshed computation, running on multiple GPUs and CPUs across a clustered network. Designed and implemented the MPI control structure for the division of critical data across the network, and the accompanying distributed CPU approach. Created data visualizations and produced scaling reporting for the final program to demonstrate a 3600x increase in performance over single core.",
@@ -158,7 +174,7 @@
     {#each projects as project}
       <div class="projectWrapper" id={project.name}>
         <div class="projectTopper" transition:blur={blurOptions}>
-          <a class="links" href={project.url} target="_blank">{project.name}</a>
+          <a class="links" href={project.url} target={ project.newTarget ? "_blank" : "" }>{project.name}</a>
           <div class="projectTechnologies">Technologies: {project.technologies}</div>
           <div class="lineLabel">{project.date}</div>
         </div>
