@@ -114,9 +114,6 @@
 
   onMount(()=>{
     show = true;
-		if (urlsToHideNavbar.includes($page.route.id)){	
-			show = false;
-		} 
   });
 
   let intSelected:number = navOptions.findIndex(option => option.url == $page.route.id);    
