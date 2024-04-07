@@ -66,17 +66,14 @@
 </style>
 
 <script lang="ts">
-    import { typewriter } from "$lib/transitions";
-    import { blur, fly } from "svelte/transition";
+    import { fly } from "svelte/transition";
     import tippy, { type Props } from 'tippy.js';
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/material.css';
     import type { PageData } from './$types';
-    import { onDestroy, onMount } from "svelte";
+    import { onMount } from "svelte";
     import { cardTransition } from "$lib/standards";
     import { updateTopbarName } from "$lib/stores";
-    import Carousel from 'svelte-carousel';
-    import { browser } from "$app/environment";
     
     export let data: PageData;
     let carousel:any; 
@@ -147,10 +144,8 @@
             {/if} -->
     
             <div class="aboutContainer">
-                <p class="p-line" in:fly={{x:100, duration:2000}} >I'm currently a software developer with {(new Date().getFullYear() - 2020)} years of professional experience, and many more in the learning phases.</p>
-                <p class="p-line" in:fly={{x:-100, duration:2000}} >I graduated
-				from Utah State University in <b>May 2024</b> with a <b>B.S.
-				Computer Science & Mathematics Minor.</b></p>
+                <p class="p-line" in:fly={{x:100, duration:2000}} >I'm currently a software developer with {(new Date().getFullYear() - 2022)} years of professional experience, and many more in the learning phases.</p>
+                <p class="p-line" in:fly={{x:-100, duration:2000}} >I graduated from Utah State University in with a bachelors in Computer Science and a Mathematics minor.</p>
                 <p class="p-line" in:fly={{x:100, duration:2000}} >I love to tinker and learn new technologies, with a current penchant for split ortholinear keyboards, like my Corne!</p>
 
 				<img src="images/about/corne.jpg" alt="" class="cardWrapper corne">

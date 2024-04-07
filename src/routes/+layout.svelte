@@ -19,6 +19,7 @@
     .navbar {
         display: flex;
         height: 100%;
+
     }
     
     .slotted {

@@ -42,9 +42,7 @@
 	import 'tippy.js/themes/material.css';
     import { updateTopbarName, readableTopbarName } from "$lib/stores";
     import { ForceRequestInit } from "$lib/types";
-
-    let toolTipContent = 'Rocky Mountain High!';
-    
+ 
     updateTopbarName("Brayden Hill")
     let show:boolean = false;
     onMount(()=>{
@@ -90,12 +88,12 @@
     <div transition:fly={{y:50, x:50, duration:1000}} class="cardWrapper">
         <h1 class="topline" in:typewriter={{}}>Hi, I'm Brayden.</h1>
 
-        <div use:tooltip={{content: toolTipContent, theme:"material", placement: "bottom"}} class="profilePicWrapper">
+        <div class="profilePicWrapper">
             <!-- svelte-ignore a11y-img-redundant-alt -->
             <img transition:blur={{amount:100, duration:1000}} src="/images/profile/profile.jpg" class="profilePic" alt="Profile Picture">
         </div>
 
-        <p class="p-line" in:fly={{x:100, duration:2000}}>Welcome in! I'm a software developer with <strong>{(new Date().getFullYear()) - 2020} years</strong> of experience.</p>
+        <p class="p-line" in:fly={{x:100, duration:2000}}>Welcome in! I'm a software developer with <strong>{(new Date().getFullYear()) - 2022} years</strong> of experience.</p>
         <p class="p-line" in:fly={{x:-100, duration:2000}}>Currently, I work as a <strong>Full-Stack Developer</strong>, but I have an interest in all things computing. </p>
         <p class="p-line" in:fly={{x:100, duration:2000}}>When I'm not writing code, I love to get outdoors, exercise, or fall down the rabbit hole on a fascinating topic! 
             <i><a class="links" href="https://en.wikipedia.org/wiki/The_Crystal_Palace" target="_blank">Crystal Palace, anyone?</a></i>

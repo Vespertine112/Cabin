@@ -110,18 +110,18 @@
         show = true;
     });
 
-    updateTopbarName("My Experience");
+    updateTopbarName("Experience");
 
     const professionalExperiences = [
         {
             name: "Global Vinyl Solutions",
             logo: "/icons/GVS.png",
             url: "https://globalvinylsolutions.com/",
-            jobTitle: "Junior Full-Stack Developer",
+            jobTitle: "Full-Stack Developer",
             technologies: "Electron, Angular, MongoDB, Node",
             elapsedTime: "May 2022 - Present",
             images: ["images/experience/windowperfect_demo.gif"], 
-            description: "At GVS, I played a pivotal role in the development and enhancement of our core CRM product. I was responsible for designing, implementing, and maintaining critical functionalities, ensuring the seamless operation of the software. In addition, I successfully identified and addressed data pipeline issues, leading to a substantial reduction in request size and a significant boost in overall performance compared to previous methods. I was able to create the user experience and interface for various components, with a specific focus on PDF report generation and dynamic cost presentation for end customers, both internally within the program and on invoices. Lastly, I spearheaded the implementation of automatic program updates, complete with a user-friendly interface, accessible patch notes, robust backend processes, release channels, versioning mechanisms, and other essential features, contributing to the overall efficiency and user satisfaction of the software.",
+            description: "At GVS, I played a pivotal role in the development and enhancement of our core CRM product. I was responsible for designing, implementing, and maintaining critical functionalities, ensuring the seamless operation of the software. In addition, I successfully identified and addressed data pipeline issues, leading to a substantial reduction in request size and a significant boost in overall performance compared to previous methods. I was able to create the user experience and interface for various components, with a specific focus on PDF report generation and dynamic cost presentation for end-customers, both internally within the program and on invoices. Lastly, I spearheaded the implementation of automatic program updates, complete with a user-friendly interface, accessible patch notes, robust backend processes, release channels, versioning mechanisms, and other essential features, contributing to the overall efficiency and user satisfaction of the software.",
             listNotes: [
                 "Designed, implemented, and maintained core functionality and features for our core CRM product.",
                 "Discovered and fixed data pipeline issues which resulted in significant reduction in request size and a large increase in performance over previous methods.",
@@ -130,17 +130,17 @@
             ]
         },
         {
-            name: "SEI Consulting",
+            name: "Systems Evolution Inc",
             logo: "/icons/SEI.png",
             url: "https://www.sei.com/",
             jobTitle: "Software Engineering Intern",
             technologies: "Python, Powershell, Bash",
             elapsedTime: "May 2021 - May 2022", 
-            description: "During my tenure at the SEI, I worked on many projects enhancing operational efficiency through the development and design of inventory tracking scripts. These scripts were core functionality in monitoring the allocation of internal technology assets to employees, ensuring streamlined tracking processes. Additionally, I actively collaborated on, constructued, and contributed to the implementation of numerous RMM (Remote Monitoring and Management) scripts. This involvement extended to managing assets and collecting remote data, showcasing my commitment to optimizing resource utilization. I demonstrated proficiency in automation by creating various helper scripts. These scripts facilitated seamless data management and automation processes, enabling efficient outbound interactions with platforms such as Dropbox, SharePoint, and more. Through these initiatives, I consistently contributed to the technological infrastructure and operational workflows, showcasing my versatility and dedication to advancing the organization's goals.",
+            description: "During my tenure at the SEI, I worked on many projects enhancing operational efficiency through the development and design of inventory tracking scripts. These scripts were core functionality in monitoring the allocation of internal technology assets to employees, ensuring streamlined tracking processes. Additionally, I actively collaborated on, constructued, and contributed to the implementation of numerous RMM (Remote Monitoring and Management) scripts. This involvement extended to managing assets and collecting remote data, showcasing my commitment to optimizing resource utilization. I demonstrated proficiency in automation by creating various helper scripts.",
             listNotes: [
-                "Built and designed inventory tracking scripts to track the internal technology assets allocated to employees.",
-                "Collaborated on, and assisted with implementation of many RMM scripts used to manage assets & gather remote data.",
-                "Created many helper scripts to assist data management and automation with outbound interactions to Dropbox, SharePoint, and more."
+                // "Built and designed inventory tracking scripts to track the internal technology assets allocated to employees.",
+                // "Collaborated on, and assisted with implementation of many RMM scripts used to manage assets & gather remote data.",
+                // "Created many helper scripts to assist data management and automation with outbound interactions to Dropbox, SharePoint, and more."
             ],            
         },
     ]

@@ -105,7 +105,7 @@
         carousel.goToNext()
     }
 
-    updateTopbarName("My Projects");
+    updateTopbarName("Projects");
 
     const projects = [
       {
@@ -119,7 +119,7 @@
           "images/lunarlander/Level_Select.png",
           "images/lunarlander/Playing.png",
         ],
-        description: "Built a lunarlander clone from scratch with typescript, and svelte. It has custom particle systems & game mechanics, customizable controls, realistic gravity, and more!"
+        description: "Built a LunarLander clone from scratch with typescript, and svelte. It has custom particle systems, re-mappable controls, realistic gravity, and more!"
       },
       {
         name: "OpenLift",
