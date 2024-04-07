@@ -58,7 +58,6 @@ declare module '$env/static/private' {
 	export const _: string;
 	export const XAUTHORITY: string;
 	export const FZF_DEFAULT_COMMAND: string;
-	export const XDG_GREETER_DATA_DIR: string;
 	export const MOTD_SHOWN: string;
 	export const HOME: string;
 	export const LANG: string;
@@ -107,7 +106,6 @@ declare module '$env/static/private' {
 	export const PATH: string;
 	export const npm_config_node_gyp: string;
 	export const ALACRITTY_LOG: string;
-	export const GDMSESSION: string;
 	export const DBUS_SESSION_BUS_ADDRESS: string;
 	export const FZF_DEFAULT_OPTS: string;
 	export const npm_config_global_prefix: string;
@@ -180,7 +178,6 @@ declare module '$env/dynamic/private' {
 		_: string;
 		XAUTHORITY: string;
 		FZF_DEFAULT_COMMAND: string;
-		XDG_GREETER_DATA_DIR: string;
 		MOTD_SHOWN: string;
 		HOME: string;
 		LANG: string;
@@ -229,7 +226,6 @@ declare module '$env/dynamic/private' {
 		PATH: string;
 		npm_config_node_gyp: string;
 		ALACRITTY_LOG: string;
-		GDMSESSION: string;
 		DBUS_SESSION_BUS_ADDRESS: string;
 		FZF_DEFAULT_OPTS: string;
 		npm_config_global_prefix: string;
