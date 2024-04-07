@@ -19,12 +19,15 @@
 
 
         .cardWrapper {
-            background-image: url("/lunarlander/backgrounds/main_background.png");
-            background-size: cover;
-
+			background-size: cover;
 			padding: unset !important;
 			overflow-y: hidden !important;
 			color: var(--llbackground) !important;
+			display: flex;
+			flex-direction: column;
+			align-content: space-around;
+			align-items: stretch;
+			justify-content: space-between;
         }
 
         .paneWrapper {
@@ -32,7 +35,7 @@
             flex-direction: row;
             justify-content: center;
             width: 100%;
-            height: 80vh;
+			height: 100%;
         }
 
         .header {
@@ -42,8 +45,11 @@
             flex-direction: column;
             align-items: center;
             align-content: center;
-            position: relative;
         }
+
+		.header > h1{
+			margin: 8px 0 8px 0;
+		}
 
         .footer {
             width: 100%;
@@ -55,7 +61,6 @@
             align-content: center;
             justify-content: flex-start;
             flex-wrap: nowrap;
-            flex: 1 0 auto;
         }
        
         .displayPane {
@@ -78,6 +83,12 @@
 			align-items: center;
 			justify-content: center;
 			width:100%;
+			height:100%;
+		}
+
+		#renderCanvas{
+		width: 100%;
+		height: 100%;
 		}
 
         
@@ -171,8 +182,8 @@
 	updateTopbarName("Lunar Lander");
 
     $: lander = new Game();
-    $: canvasWidth = 1000;
-    $: canvasHeight = 1000;
+    $: canvasWidth = 100;
+    $: canvasHeight = 100;
     $: playerName = '';
     $: playTime = Math.floor(lander.playTime / 1000);
 	$: fps = 0;
@@ -289,12 +300,10 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
         <h1>Lunar Lander</h1>
     </div>
 
-    <div class="paneWrapper" bind:clientWidth={canvasWidth}
-	bind:clientHeight={canvasHeight}>
+    <div class="paneWrapper"  bind:clientWidth={canvasWidth} bind:clientHeight={canvasHeight}>
         <div
             in:fly={{ y: 100, duration: 1000 }}
-            class={true ? 'renderPane' : 'hidden renderPane'}
-            >
+            class={true ? 'renderPane' : 'hidden renderPane'} >
             <div class={lander.gameState != GameStatusEnum.Idle? "HUD" : "hidden"}>
                 <span class="displayNone">HUD</span>
                 <hr style="width:100%; color: var(--termGreen);">
@@ -348,8 +357,9 @@ on:mousemove={mouseMoveHandler} on:mouseup={mouseUpHandler} />
 					on:click={()=>updateHighScores(true)}>Main Menu</button>
 				</div>
 			{/if}
-            
-			<canvas id="renderCanvas" style="width: 100%; height: 100%;" bind:this={canvas} />
+           
+		   <!-- <div id="renderCanvas"></div> -->
+			<canvas id="renderCanvas" bind:this={canvas}> </canvas>
         </div>
 
     </div>
