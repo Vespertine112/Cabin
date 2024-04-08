@@ -32,6 +32,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@vercel/analytics": "^1.2.2",
     "tippy.js": "^6.3.7"
   }
 }

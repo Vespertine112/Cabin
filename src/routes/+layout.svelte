@@ -48,8 +48,9 @@
 	import { onMount } from "svelte";
     import Navbar from "./Navbar/Navbar.svelte";
     import Topbar from "./Topbar.svelte";
-    import { fly } from "svelte/transition";
-    import { page } from "$app/stores";
+	import { inject } from "@vercel/analytics";
+
+	inject();
 
     let show:boolean = false;
     onMount(()=>{
