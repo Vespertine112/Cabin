@@ -145,8 +145,9 @@
     
             <div class="aboutContainer">
                 <p class="p-line" in:fly={{x:100, duration:2000}} >I'm currently a software developer with {(new Date().getFullYear() - 2022)} years of professional experience, and many more in the learning phases.</p>
-                <p class="p-line" in:fly={{x:-100, duration:2000}} >I graduated from Utah State University in with a bachelors in Computer Science and a Mathematics minor.</p>
-                <p class="p-line" in:fly={{x:100, duration:2000}} >I love to tinker and learn new technologies, with a current penchant for split ortholinear keyboards, like my Corne!</p>
+                <p class="p-line" in:fly={{x:-100, duration:2000}} >I graduated from Utah State University with a B.S Computer Science and a Mathematics minor.</p>
+                <p class="p-line" in:fly={{x:100, duration:2000}} >I love to tinker and learn new technologies, with a current penchant for split ortholinear
+				keyboards, like my <a class="links" href="https://github.com/foostan/crkbd">Corne</a>!</p>
 
 				<img src="images/about/corne.jpg" alt="" class="cardWrapper corne">
                 

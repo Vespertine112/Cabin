@@ -94,11 +94,13 @@
         </div>
 
         <p class="p-line" in:fly={{x:100, duration:2000}}>Welcome in! I'm a software developer with <strong>{(new Date().getFullYear()) - 2022} years</strong> of experience.</p>
-        <p class="p-line" in:fly={{x:-100, duration:2000}}>Currently, I work as a <strong>Full-Stack Developer</strong>, but I have an interest in all things computing. </p>
+        <p class="p-line" in:fly={{x:-100, duration:2000}}>Currently, I work as a <strong>Full-Stack Developer</strong> focused on building
+		a full-service CRM system in the window and door manufacturing space.</p>
         <p class="p-line" in:fly={{x:100, duration:2000}}>When I'm not writing code, I love to get outdoors, exercise, or fall down the rabbit hole on a fascinating topic! 
             <i><a class="links" href="https://en.wikipedia.org/wiki/The_Crystal_Palace" target="_blank">Crystal Palace, anyone?</a></i>
         </p>
-        <p class="p-line" in:fly={{x:-100, duration:2000}}>Feel free to contact me at any of the links above! I'd love to hear from you!</p>
+		<p class="p-line" in:fly={{x:-100, duration:2000}}>I'm currently open new roles in the Full-Stack developent space.</p>
+        <p class="p-line" in:fly={{x:100, duration:2000}}>Feel free to contact me at any of the links above! I'd love to hear from you!</p>
 
         <div class="quoteBlock">
             <i>{quote.content} - <a href={author.url} class="links" use:tooltip={{content: author.bio, theme:"material", placement:"top" }} target="_blank">{quote.author}</a></i>
