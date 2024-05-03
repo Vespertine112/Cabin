@@ -1,117 +1,126 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Rubik+Doodle+Shadow&family=Silkscreen:wght@400;700&family=Single+Day&display=swap"
-            rel="stylesheet"
-        />
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Rubik+Doodle+Shadow&family=Silkscreen:wght@400;700&family=Single+Day&display=swap"
+			rel="stylesheet"
+		/>
 
-        <title>braydenhill</title>
-        %sveltekit.head%
-    </head>
-    <style>
-        :root {
-            --background: #231f20;
-            --persianRed: #bb4430;
-            --verdigris: #7ebdc2;
-            --vanilla: #f3dfa2;
-            --linen: #efe6dd;
-            --shadow: 0 8px 16px rgba(0, 0, 0, 1);
-        }
+		<title>braydenhill</title>
+		%sveltekit.head%
+	</head>
+	<style>
+		:root {
+			--background: #231f20;
+			--persianRed: #bb4430;
+			--verdigris: #7ebdc2;
+			--vanilla: #f3dfa2;
+			--linen: #efe6dd;
+			--shadow: 0 8px 16px rgba(0, 0, 0, 1);
+		}
 
-        @font-face {
-            font-family: "JetBrains Mono";
-            src:
-                url("fonts/static/JetBrainsMono-Regular.ttf") format("truetype"),
-                url("fonts/JetBrainsMono-VariableFont_wght.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-Bold.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-BoldItalic.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-ExtraBold.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-ExtraBoldItalic.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-ExtraLight.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-ExtraLightItalic.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-Italic.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-Light.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-LightItalic.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-Medium.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-MediumItalic.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-Regular.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-SemiBold.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-SemiBoldItalic.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-Thin.ttf") format("truetype"),
-                url("fonts/static/JetBrainsMono-ThinItalic.ttf") format("truetype");
-            font-style: normal;
-        }
+		@font-face {
+			font-family: 'JetBrains Mono';
+			src:
+				url('fonts/static/JetBrainsMono-Regular.ttf') format('truetype'),
+				url('fonts/JetBrainsMono-VariableFont_wght.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-Bold.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-BoldItalic.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-ExtraBold.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-ExtraBoldItalic.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-ExtraLight.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-ExtraLightItalic.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-Italic.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-Light.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-LightItalic.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-Medium.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-MediumItalic.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-Regular.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-SemiBold.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-SemiBoldItalic.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-Thin.ttf') format('truetype'),
+				url('fonts/static/JetBrainsMono-ThinItalic.ttf') format('truetype');
+			font-style: normal;
+		}
 
-        body {
-            background-image: linear-gradient(to bottom right, #0c2a43, #bb4430);
-            margin: 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--verdigris);
-            font-family: "JetBrains Mono", monospace;
-        }
+		body {
+			background-image: linear-gradient(to bottom right, #0c2a43, #bb4430);
+			margin: 0;
+			scrollbar-width: thin;
+			scrollbar-color: var(--verdigris);
+			font-family: 'JetBrains Mono', monospace;
+		}
 
-        .cardWrapper {
-            border-radius: 8px;
-            border: 4px solid var(--linen);
-            padding: 10px;
-            background-color: var(--background);
-            color: var(--linen);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            align-content: flex-start;
-            flex-wrap: nowrap;
-            overflow-y: scroll;
-            overflow-x: hidden;
-            font-family: "JetBrains Mono", monospace;
-            margin: 0 0 0 4px;
-        }
+		.cardWrapper {
+			border-radius: 8px;
+			border: 4px solid var(--linen);
+			padding: 10px;
+			background-color: var(--background);
+			color: var(--linen);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
+			flex: 1 1 auto;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: flex-start;
+			align-content: flex-start;
+			flex-wrap: nowrap;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			font-family: 'JetBrains Mono', monospace;
+			margin: 0 0 0 4px;
+		}
 
-        /* Generic color set for links */
-        .links {
-            color: var(--verdigris);
-        }
+		/* Generic color set for links */
+		.links {
+			color: var(--verdigris);
+			transition: 0.35s;
+			font-weight: normal;
+			text-shadow: 0px 0px 12px var(--verdigris);
+			text-decoration: var(--verdigris) solid underline;
+		}
 
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
+		.links:hover {
+			text-shadow: 0px 0px 4px var(--verdigris);
+			text-decoration: var(--verdigris) wavy underline;
+		}
 
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--verdigris);
-            border-radius: 6px;
-        }
+		::-webkit-scrollbar {
+			width: 12px;
+		}
 
-        ::-webkit-scrollbar-track {
-            background-color: #181617;
-            border-radius: 3px;
-            width: 12px;
-        }
+		::-webkit-scrollbar-thumb {
+			background-color: var(--verdigris);
+			border-radius: 6px;
+		}
 
-        .topline {
-            color: var(--persianRed);
-        }
+		::-webkit-scrollbar-track {
+			background-color: #181617;
+			border-radius: 3px;
+			width: 12px;
+		}
 
-        @media only screen and (max-width: 767px) {
-            .topline {
-                font-size: 1.25em;
-            }
+		.topline {
+			color: var(--persianRed);
+		}
 
-            .cardWrapper {
-                margin: unset !important;
-            }
-        }
-    </style>
+		@media only screen and (max-width: 767px) {
+			.topline {
+				font-size: 1.25em;
+			}
 
-    <script>
-        let aciiOWl =
-            '                       \n\
+			.cardWrapper {
+				margin: unset !important;
+			}
+		}
+	</style>
+
+	<script>
+		let aciiOWl =
+			'                       \n\
                           ""    "".\n\
                          / `-.  .-" \n\
                         /( (O))((O) )\n\
@@ -135,11 +144,11 @@
                        |. | : .|\n\
 					   ';
 
-        console.log(aciiOWl);
-        console.log("Whooo goes there! \nIf you're here, shoot me a message! \n[hillbgh@gmail.com]");
-    </script>
+		console.log(aciiOWl);
+		console.log("Whooo goes there! \nIf you're here, shoot me a message! \n[hillbgh@gmail.com]");
+	</script>
 
-    <body data-sveltekit-preload-data="hover">
-        <div style="display: contents">%sveltekit.body%</div>
-    </body>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
 </html>
