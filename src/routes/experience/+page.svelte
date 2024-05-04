@@ -73,12 +73,7 @@
 			{#each professionalExperiences as experience}
 				<div class="experienceWrapper">
 					<div transition:blur={blurOptions}>
-						<img
-							class="companyLogo"
-							style="background-color: white;"
-							src={experience.logo}
-							alt=""
-						/>
+						<img class="companyLogo" style="background-color: white;" src={experience.logo} alt="" />
 					</div>
 
 					<div class="experienceTime">
@@ -164,6 +159,7 @@
 
 	.links {
 		font-style: italic;
+		font-size: 1.5rem;
 		font-weight: bolder;
 	}
 

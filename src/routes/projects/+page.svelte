@@ -20,9 +20,6 @@
 	onMount(() => {
 		show = true;
 	});
-	const handleNextClick = () => {
-		carousel.goToNext();
-	};
 
 	updateTopbarName('Projects');
 
@@ -41,7 +38,7 @@
 				'images/slyther/slyther_multiplayer.gif'
 			],
 			description:
-				"Built a FOSS clone of popular multiplayer snake games! Watch a <a class='links' href='https://youtu.be/Ma6ILRWCc4o?si=uWpkPHns6UMs9q6m'>gameplay demo</a>, or see <a class='links' href='https://www.youtube.com/watch?v=SWfXIEYYWyw'>mobile support</a> . It includes the client & server, scoring, multiple control schemes & mappable controls, Real-time leaderboard tracking, dynamic aspect ratio rendering, Input lag calculation, Mobile support, and so much more! Play today at the link above (it's a github link, you need to build it)."
+				"Built a FOSS clone of popular multiplayer snake games! Watch a <a class='links' href='https://youtu.be/Ma6ILRWCc4o?si=uWpkPHns6UMs9q6m'>gameplay demo</a>, or see <a class='links' href='https://www.youtube.com/watch?v=SWfXIEYYWyw'>mobile support</a>. It includes the client & server, scoring, multiple control schemes & mappable controls, Real-time leaderboard tracking, dynamic aspect ratio rendering, Input lag calculation, Mobile support, and so much more! Play today at the link above (it's a github link, you need to build it)."
 		},
 		{
 			name: 'LunarLander',
@@ -211,6 +208,7 @@
 	.links {
 		font-style: italic;
 		font-weight: bold;
+		font-size: 1.5rem;
 	}
 
 	.projectTechnologies {

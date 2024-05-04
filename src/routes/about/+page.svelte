@@ -34,21 +34,6 @@
 	};
 
 	updateTopbarName('About Me');
-
-	let content = 'Grab a copy of my current Resume!';
-
-	function tooltip(node: Element, options: Object) {
-		const tooltip = tippy(node, options);
-
-		return {
-			update(options: Partial<Props>) {
-				tooltip.setProps(options);
-			},
-			destroy() {
-				tooltip.destroy();
-			}
-		};
-	}
 </script>
 
 {#if show}
@@ -77,12 +62,11 @@
 
 			<div class="aboutContainer">
 				<p class="p-line" in:fly={{ x: 100, duration: 2000 }}>
-					I'm currently a software developer with {new Date().getFullYear() - 2022} years of professional
-					experience, and many more in the learning phases.
+					I'm currently a software developer with {new Date().getFullYear() - 2022} years of professional experience,
+					and many more in the learning phases.
 				</p>
 				<p class="p-line" in:fly={{ x: -100, duration: 2000 }}>
-					I graduated from Utah State University with a B.S Computer Science and a Mathematics
-					minor.
+					I graduated from Utah State University with a B.S. in Computer Science and a Mathematics minor.
 				</p>
 				<p class="p-line" in:fly={{ x: 100, duration: 2000 }}>
 					I love to tinker and learn new technologies, with a current penchant for split ortholinear
@@ -92,8 +76,7 @@
 				<img src="images/about/corne.jpg" alt="" class="cardWrapper corne" />
 
 				<p class="p-line" in:fly={{ x: -100, duration: 2000 }}>
-					Grab a copy of my <a class="links" href="pdf/Resume.pdf" target="_blank">current resume</a
-					>
+					Grab a copy of my <a class="links" href="pdf/Resume.pdf" target="_blank">current resume</a>
 				</p>
 
 				<hr style="width: 100%" />
