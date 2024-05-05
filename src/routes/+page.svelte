@@ -75,11 +75,11 @@
 
 		<div class="quoteBlock">
 			<i
-				>{quote.content} -
+				>{quote?.content ?? ''} -
 				<a
-					href={author.url}
+					href={author?.url ?? ''}
 					class="links"
-					use:tooltip={{ content: author.bio, theme: 'material', placement: 'top' }}
+					use:tooltip={{ content: author?.bio ?? '', theme: 'material', placement: 'top' }}
 					target="_blank">{quote.author}</a
 				></i
 			>

@@ -135,7 +135,7 @@
 						{#if project.images && revealImages}
 							<Carousel
 								autoplay
-								autoplayDuration={5000}
+								autoplayDuration={7500}
 								autoplayProgressVisible
 								pauseOnFocus
 								swiping={true}
