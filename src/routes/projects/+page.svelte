@@ -49,9 +49,10 @@
 			newTarget: false,
 			date: 'Feb 2024',
 			images: [
-				'images/lunarlander/MainMenu.png',
-				'images/lunarlander/Level_Select.png',
-				'images/lunarlander/Playing.png'
+				'images/lunarlander/Level_Select.gif',
+				'images/lunarlander/Moon.gif',
+				'images/lunarlander/Mars.gif',
+				'images/lunarlander/MainMenu.png'
 			],
 			description:
 				'Built a LunarLander clone from scratch with typescript, and svelte. It has custom particle systems, re-mappable controls, realistic gravity, and more!'
