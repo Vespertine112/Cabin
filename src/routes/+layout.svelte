@@ -43,7 +43,7 @@
 		display: flex;
 		flex-direction: row;
 		flex: 1;
-		max-height: 90vh;
+		max-height: 92vh;
 	}
 
 	.navbar {
