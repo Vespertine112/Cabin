@@ -69,5 +69,9 @@
 			width: 0%;
 			flex: 0 0 0%;
 		}
+
+		.bodyColumns {
+			max-height: 88vh;
+		}
 	}
 </style>

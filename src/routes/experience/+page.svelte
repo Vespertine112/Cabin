@@ -30,7 +30,7 @@
 			jobTitle: 'Full-Stack Developer',
 			technologies: 'Electron, Angular, MongoDB, Node',
 			elapsedTime: 'May 2022 - Present',
-			images: ['images/experience/windowperfect_demo.gif'],
+			// images: ['images/experience/windowperfect_demo.gif'],
 			description:
 				'At GVS, I played a pivotal role in the development and enhancement of our core CRM product. I was responsible for designing, implementing, and maintaining critical functionalities, ensuring the seamless operation of the software. In addition, I successfully identified and addressed data pipeline issues, leading to a substantial reduction in request size and a significant boost in overall performance compared to previous methods. I was able to create the user experience and interface for various components, with a specific focus on PDF report generation and dynamic cost presentation for end-customers, both internally within the program and on invoices. Lastly, I spearheaded the implementation of automatic program updates, complete with a user-friendly interface, accessible patch notes, robust backend processes, release channels, versioning mechanisms, and other essential features, contributing to the overall efficiency and user satisfaction of the software.',
 			listNotes: [

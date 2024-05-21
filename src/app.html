@@ -70,7 +70,7 @@
 			justify-content: flex-start;
 			align-content: flex-start;
 			flex-wrap: nowrap;
-			overflow-y: scroll;
+			overflow-y: auto;
 			overflow-x: hidden;
 			font-family: 'JetBrains Mono', monospace;
 			margin: 0 0 0 4px;
@@ -86,16 +86,10 @@
 		}
 
 		.links:hover {
-			text-shadow: 0px 0px 4px var(--verdigris);
-			/* text-decoration: var(--verdigris) dashed underline; */
+			text-shadow: 0px 0px 4px #f2a378;
+			color: #f2a378;
+			text-decoration: #f2a378 solid underline;
 			font-style: !important;
-		}
-
-		.links:hover::before {
-			content: '{';
-		}
-		.links:hover::after {
-			content: '}';
 		}
 
 		::-webkit-scrollbar {
