@@ -24,20 +24,22 @@
 
 	const professionalExperiences = [
 		{
-			name: 'Global Vinyl Solutions',
+			name: 'WindowPerfect',
 			logo: '/icons/GVS.png',
 			url: 'https://globalvinylsolutions.com/',
-			jobTitle: 'Full-Stack Developer',
+			jobTitle: 'Technical Founder',
 			technologies: 'Electron, Angular, MongoDB, Node',
 			elapsedTime: 'May 2022 - Present',
-			// images: ['images/experience/windowperfect_demo.gif'],
 			description:
-				'At GVS, I played a pivotal role in the development and enhancement of our core CRM product. I was responsible for designing, implementing, and maintaining critical functionalities, ensuring the seamless operation of the software. In addition, I successfully identified and addressed data pipeline issues, leading to a substantial reduction in request size and a significant boost in overall performance compared to previous methods. I was able to create the user experience and interface for various components, with a specific focus on PDF report generation and dynamic cost presentation for end-customers, both internally within the program and on invoices. Lastly, I spearheaded the implementation of automatic program updates, complete with a user-friendly interface, accessible patch notes, robust backend processes, release channels, versioning mechanisms, and other essential features, contributing to the overall efficiency and user satisfaction of the software.',
+				'As A Technical Founder of WindowPerfect, I am spearheading the development of a comprehensive full-stack SaaS solution in the Configure, Price, Quote (CPQ) software space for window and door manufacturing. This cross-platform application leverages industry best practices to deliver a robust, scalable system capable of handling multiple concurrent users. Our solution incorporates advanced features such as sophisticated data management and processing, dynamic PDF report generation, seamless API integrations, and cutting-edge window and door graphic rendering with accurate estimations.',
 			listNotes: [
-				'Designed, implemented, and maintained core functionality and features for our core CRM product.',
-				'Discovered and fixed data pipeline issues which resulted in significant reduction in request size and a large increase in performance over previous methods.',
-				'Created UX/UI and all logic for many components, including all PDF report generation and the associated dynamic cost for the end customer in the program internally and in invoices.',
-				'Implemented automatic program updates with UX/UI, viewable patch notes, backend implementation, release channels, versioning, and more.'
+				'Architected and implemented a full-stack CPQ SaaS product, utilizing Electron, Angular, MongoDB, and Node technologies to create a cross-platform solution for the window and door manufacturing industry.',
+				'Engineered critical core functionalities, including an innovative data pipeline that significantly reduced request sizes and boosted overall system performance.',
+				'Designed and developed an intuitive user interface with a focus on user experience, incorporating dynamic cost presentations for both internal use and customer-facing invoices.',
+				'Created and integrated a comprehensive PDF report generation system, enhancing communication and documentation processes for users and clients.',
+				'Implemented an automated update system featuring user-friendly interfaces, accessible patch notes, robust backend processes, and flexible release channels to ensure seamless software evolution.',
+				'Developed advanced window and door graphic rendering capabilities, coupled with precise estimation algorithms, to provide accurate visual representations and quotes.',
+				"Established and maintained API integrations and harnesses, facilitating smooth data exchange and enhancing the software's interoperability with external systems."
 			]
 		},
 		{

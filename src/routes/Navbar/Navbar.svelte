@@ -59,7 +59,7 @@
 <style>
 	nav {
 		border-radius: 8px;
-		border: 4px solid var(--linen);
+		border: 1px solid var(--linen);
 		background-color: var(--background);
 		padding: 10px;
 		box-shadow: var(--shadow);

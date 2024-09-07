@@ -88,7 +88,7 @@
 <style>
 	.top-bar {
 		border-radius: 8px;
-		border: 4px solid var(--linen);
+		border: 1px solid var(--linen);
 		padding: 10px;
 		margin-bottom: 4px;
 		color: var(--linen);
