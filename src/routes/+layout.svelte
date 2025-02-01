@@ -14,13 +14,16 @@
 	let open = false;
 </script>
 
-<div class="pageWrapper">
-	<Topbar bind:sidebar={open} />
+<div class="page-wrapper">
+	<div>
+		<Topbar bind:sidebar={open} />
+	</div>
 
-	<div class="bodyColumns">
+	<div class="body-columns">
 		<div class="navbar">
 			<Navbar bind:open />
 		</div>
+
 		{#if show}
 			<div class="slotted">
 				<slot />
@@ -30,20 +33,20 @@
 </div>
 
 <style global>
-	.pageWrapper {
+	.page-wrapper {
 		display: flex;
 		flex-direction: column;
-		height: calc(100vh - 2em);
 		padding: 1em;
+		height: 100%;
 	}
 
-	.bodyColumns {
-		margin-top: 4px;
+	.body-columns {
 		justify-content: space-between;
 		display: flex;
 		flex-direction: row;
+		height: 20%;
 		flex: 1;
-		max-height: 92vh;
+		margin-top: 8px;
 	}
 
 	.navbar {
@@ -54,8 +57,8 @@
 	.slotted {
 		display: flex;
 		height: 100%;
+		width: 100%;
 		z-index: 0;
-		flex: 1;
 	}
 
 	@media only screen and (max-width: 767px) {
@@ -70,7 +73,7 @@
 			flex: 0 0 0%;
 		}
 
-		.bodyColumns {
+		.body-columns {
 			max-height: 88vh;
 		}
 	}
