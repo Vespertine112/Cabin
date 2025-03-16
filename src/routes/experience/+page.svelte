@@ -90,13 +90,7 @@
 					{#if browser && revealImages}
 						<div class="carouselWrapper" in:scale|global={{ duration: 1000, easing: quintOut }}>
 							{#if experience.images}
-								<Carousel
-									autoplayDuration={5000}
-									autoplayProgressVisible
-									pauseOnFocus
-									swiping={true}
-									bind:this={carousel}
-								>
+								<Carousel autoplayDuration={5000} autoplayProgressVisible pauseOnFocus swiping={true} bind:this={carousel}>
 									{#each experience.images as image, i}
 										<img class="carouselImage" src={image} alt="" />
 									{/each}
@@ -128,15 +122,6 @@
 {/if}
 
 <style>
-	.card {
-		border-radius: 8px;
-		border: 4px solid var(--linen);
-		padding: 10px;
-		color: var(--linen);
-		box-shadow: var(--shadow);
-		flex: 1;
-	}
-
 	.companyLogo {
 		height: 5vh;
 		border-radius: 4px;

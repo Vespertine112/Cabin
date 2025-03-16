@@ -31,12 +31,7 @@
 </script>
 
 {#if show}
-	<div
-		class="top-bar"
-		style={sidebar ? 'z-index: 1001' : 'z-index: 0'}
-		in:fly|global={{ y: -50, duration: 1000 }}
-		out:fade
-	>
+	<div class="top-bar" style={sidebar ? 'z-index: 1001' : 'z-index: 0'} in:fly|global={{ y: -50, duration: 1000 }} out:fade>
 		<div class="hamburger">
 			<Hamburger bind:open={sidebar}></Hamburger>
 		</div>
@@ -44,41 +39,22 @@
 		<!-- A wee little easter egg lol -->
 		{#key displayName}
 			<a href="/lunarlander" style="color: var(--linen); text-decoration: none;">
-				<div
-					class="pageName"
-					on:mouseenter={vesperizeName}
-					on:mouseleave={regularName}
-					in:typewriter|global={{ speed: 1 }}
-				>
+				<div class="pageName" on:mouseenter={vesperizeName} on:mouseleave={regularName} in:typewriter|global={{ speed: 1 }}>
 					{displayName}
 				</div>
 			</a>
 		{/key}
 
 		<div class="menu">
-			<a
-				use:tooltip={{ content: 'Email Me!', theme: 'material', placement: 'bottom' }}
-				href="mailto:hillbgh@gmail.com"
-				class="menu-item"
-			>
+			<a use:tooltip={{ content: 'Email Me!', theme: 'material', placement: 'bottom' }} href="mailto:hillbgh@gmail.com" class="menu-item">
 				<img src="icons/email.svg" alt="My Email" class="logo" />
 			</a>
 
-			<a
-				use:tooltip={{ content: 'My Github', theme: 'material', placement: 'bottom' }}
-				href="https://github.com/Vespertine112"
-				class="menu-item"
-				target="_blank"
-			>
+			<a use:tooltip={{ content: 'My Github', theme: 'material', placement: 'bottom' }} href="https://github.com/Vespertine112" class="menu-item" target="_blank">
 				<img src="icons/github.svg" alt="GitHub" class="logo" />
 			</a>
 
-			<a
-				use:tooltip={{ content: 'My LinkedIn', theme: 'material', placement: 'bottom' }}
-				href="https://www.linkedin.com/in/brayden-hill/"
-				class="menu-item"
-				target="_blank"
-			>
+			<a use:tooltip={{ content: 'My LinkedIn', theme: 'material', placement: 'bottom' }} href="https://www.linkedin.com/in/brayden-hill/" class="menu-item" target="_blank">
 				<img src="icons/linkedin.svg" alt="Linkedin" class="logo" />
 			</a>
 		</div>
@@ -90,7 +66,6 @@
 		border-radius: 8px;
 		border: 1px solid var(--linen);
 		padding: 10px;
-		margin-bottom: 4px;
 		color: var(--linen);
 		background-color: var(--background);
 		display: flex;

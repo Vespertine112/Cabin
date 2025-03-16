@@ -53,6 +53,11 @@
 			scrollbar-width: thin;
 			scrollbar-color: var(--verdigris);
 			font-family: 'JetBrains Mono', monospace;
+			height: 100vh;
+		}
+
+		* {
+			box-sizing: border-box;
 		}
 
 		.cardWrapper {
@@ -152,7 +157,7 @@
 		console.log("Whooo goes there! \nIf you're here, shoot me a message! \n[hillbgh@gmail.com]");
 	</script>
 
-	<body data-sveltekit-preload-data="hover">
+	<body data-sveltekit-preload-data="hover" style="height: 100vh">
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
