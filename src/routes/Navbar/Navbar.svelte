@@ -1,20 +1,24 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { typewriter } from '$lib/transitions';
+	import { fade, fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import { fly, fade } from 'svelte/transition';
+	import { projects } from '$lib/projects';
 
 	export const navOptions = [
 		{ url: '/', label: 'Home' },
 		{ url: '/about', label: 'About' },
 		{ url: '/experience', label: 'Experience' },
-		{ url: '/projects', label: 'Projects' }
-		// { url: "/blog",       label: "Blog"       },
+		{
+			url: '/projects',
+			label: 'Projects',
+			subItems: projects.map((p) => ({ url: `/projects#${p.sectionId}`, label: p.name }))
+		},
+		{ url: '/nybbles', label: 'Nybbles' }
 	];
 
 	export let open = false;
-
 	let show: boolean = false;
+	let projectsOpen = false;
 
 	onMount(() => {
 		show = true;
@@ -26,6 +30,14 @@
 		intSelected = event.srcElement.id;
 		open = false;
 	}
+
+	function openProjects() {
+		projectsOpen = true;
+	}
+
+	function closeProjects() {
+		projectsOpen = false;
+	}
 </script>
 
 {#if show || open}
@@ -35,15 +47,35 @@
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 				<li class={intSelected == i ? 'active list-item' : 'list-item'}>
-					<a
-						class="nav-link"
-						on:click={changeComponent}
-						id={i.toString()}
-						transition:fade|global={{ delay: i * 500 }}
-						href={nav.url}
-					>
-						<span class="link-arrow">=></span> &#123;{nav.label}&#125;
-					</a>
+					{#if nav.subItems}
+						<!-- svelte-ignore a11y-interactive-supports-focus -->
+						<div class="projects-container" role="button" aria-expanded={projectsOpen} on:mouseenter={openProjects} on:mouseleave={closeProjects}>
+							<a class="nav-link" href={nav.url} style="display: flex; align-items: center; justify-content: space-between;">
+								<span>
+									<span class="link-arrow" class:open={projectsOpen}>=></span>
+									{nav.label}
+								</span>
+							</a>
+							{#if projectsOpen}
+								<ul class="sub-menu">
+									{#each nav.subItems as subItem}
+										<li class="sub-menu-item">
+											<a href={subItem.url} style="font-size: small;">
+												<span>󰘍</span>
+
+												{subItem.label}
+											</a>
+										</li>
+									{/each}
+								</ul>
+							{/if}
+						</div>
+					{:else}
+						<a class="nav-link" on:click={changeComponent} id={i.toString()} transition:fade|global={{ delay: i * 500 }} href={nav.url}>
+							<span class="link-arrow">=></span>
+							{nav.label}
+						</a>
+					{/if}
 				</li>
 				<hr />
 			{/each}
@@ -51,7 +83,6 @@
 	</nav>
 {/if}
 
-<!-- This handles the modal opacity overlay! -->
 {#if open}
 	<div class="overlay"></div>
 {/if}
@@ -68,6 +99,11 @@
 		flex-direction: column;
 		flex: 1 1 auto;
 		z-index: 0;
+		transition:
+			transform 0.25s ease-in-out,
+			width 0.3s ease-in-out; /* Add width transition */
+		width: auto; /* Allow width to be dynamic */
+		max-width: 100%; /* Prevent overflow */
 	}
 
 	ul {
@@ -97,6 +133,14 @@
 		color: var(--linen);
 		font-weight: 900;
 		font-style: normal;
+		display: inline-block;
+		transform: rotate(0deg);
+		transition: transform 0.25s ease-in-out; /*  Both ways */
+	}
+
+	.link-arrow.open {
+		transform: rotate(90deg);
+		transition: transform 0.25s ease-in-out; /*  Both ways */
 	}
 
 	.nav-link {
@@ -139,8 +183,29 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity (0.5 in this case) */
-		z-index: 1000; /* Ensure it's above other elements */
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 1000;
+	}
+
+	.projects-container {
+		cursor: pointer;
+	}
+
+	.sub-menu {
+		list-style: none;
+		padding-left: 20px;
+	}
+
+	.sub-menu li {
+		margin: 0;
+	}
+
+	.sub-menu-item:hover {
+		text-shadow: 0px 0px 12px var(--verdigris); /* Hover for subitems */
+	}
+
+	.projects-container:hover {
+		text-shadow: 0px 0px 12px var(--verdigris); /*  Hover for entire Projects menu */
 	}
 
 	@media only screen and (max-width: 767px) {
