@@ -31,7 +31,14 @@
 </script>
 
 {#if show}
-	<div class="top-bar" style={sidebar ? 'z-index: 1001' : 'z-index: 0'} in:fly|global={{ y: -50, duration: 1000 }} out:fade>
+	<div
+		class="top-bar"
+		style={sidebar ? 'z-index: 1001' : 'z-index: 0'}
+		on:mouseenter={vesperizeName}
+		on:mouseleave={regularName}
+		in:fly|global={{ y: -50, duration: 1000 }}
+		out:fade
+	>
 		<div class="hamburger">
 			<Hamburger bind:open={sidebar}></Hamburger>
 		</div>
@@ -39,7 +46,7 @@
 		<!-- A wee little easter egg lol -->
 		{#key displayName}
 			<a href="/lunarlander" style="color: var(--linen); text-decoration: none;">
-				<div class="pageName" on:mouseenter={vesperizeName} on:mouseleave={regularName} in:typewriter|global={{ speed: 1 }}>
+				<div class="pageName" in:typewriter|global={{ speed: 1 }}>
 					{displayName}
 				</div>
 			</a>

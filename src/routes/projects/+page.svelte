@@ -33,6 +33,7 @@
 {#if show}
 	<div transition:fly={cardTransition} class="cardWrapper">
 		<h1 class="topline">Projects</h1>
+		<p style="margin:0; font-style: italic">Larger personal projects</p>
 		<hr />
 
 		{#each projects as project}
@@ -83,6 +84,10 @@
 {/if}
 
 <style>
+	html {
+		scroll-behavior: smooth;
+	}
+
 	hr {
 		width: 100%;
 	}

@@ -20,11 +20,11 @@
 	$: quote = { content: '', author: '', authorSlug: '' };
 	$: author = { url: '', bio: '', description: '' };
 	const getRandomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
-	fetch('http://api.quotable.io/quotes?tags=Technology|Creativity|Imagination|Science|Creativity', ForceRequestInit)
+	fetch('https://quotable.vercel.app/quotes?tags=Technology|Creativity|Imagination|Science|Creativity', ForceRequestInit)
 		.then((result) => result.json())
 		.then((result) => {
 			quote = result.results[getRandomInt(0, result.results.length)];
-			return fetch(`https://api.quotable.io/authors?slug=${quote.authorSlug ?? 'albert-einstein'}`);
+			return fetch(`https://quotable.vercel.app/authors?slug=${quote.authorSlug ?? 'albert-einstein'}`);
 		})
 		.then((response) => response.json())
 		.then((result) => {

@@ -3,22 +3,23 @@
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { projects } from '$lib/projects';
+	import { nybbles } from '$lib/nybbles';
+	import { experiences } from '$lib/experience';
 
 	export const navOptions = [
 		{ url: '/', label: 'Home' },
 		{ url: '/about', label: 'About' },
-		{ url: '/experience', label: 'Experience' },
+		{ url: '/experience', label: 'Experience', subItems: experiences.map((e) => ({ url: `/experience#${e.sectionId}`, label: e.name })) },
 		{
-			url: '/projects',
+			url: '/projects#',
 			label: 'Projects',
 			subItems: projects.map((p) => ({ url: `/projects#${p.sectionId}`, label: p.name }))
 		},
-		{ url: '/nybbles', label: 'Nybbles' }
+		{ url: '/nybbles', label: 'Nybbles', subItems: nybbles.map((p) => ({ url: `/nybbles#${p.sectionId}`, label: p.name })) }
 	];
 
 	export let open = false;
 	let show: boolean = false;
-	let projectsOpen = false;
 
 	onMount(() => {
 		show = true;
@@ -26,17 +27,11 @@
 
 	let intSelected: number = navOptions.findIndex((option) => option.url == $page.route.id);
 
-	function changeComponent(event: any) {
-		intSelected = event.srcElement.id;
-		open = false;
-	}
-
-	function openProjects() {
-		projectsOpen = true;
-	}
-
-	function closeProjects() {
-		projectsOpen = false;
+	function changeComponent(i: number) {
+		return function (event: any) {
+			intSelected = i;
+			open = false;
+		};
 	}
 </script>
 
@@ -46,32 +41,30 @@
 			{#each navOptions as nav, i}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-				<li class={intSelected == i ? 'active list-item' : 'list-item'}>
+				<li class={intSelected == i ? 'active ' : ''}>
 					{#if nav.subItems}
 						<!-- svelte-ignore a11y-interactive-supports-focus -->
-						<div class="projects-container" role="button" aria-expanded={projectsOpen} on:mouseenter={openProjects} on:mouseleave={closeProjects}>
-							<a class="nav-link" href={nav.url} style="display: flex; align-items: center; justify-content: space-between;">
+						<div class="projects-container" role="button">
+							<a class="nav-link list-item" href={nav.url} on:click={changeComponent(i)} style="display: flex; align-items: center; justify-content: space-between;">
 								<span>
-									<span class="link-arrow" class:open={projectsOpen}>=></span>
+									<span class="link-arrow">=></span>
 									{nav.label}
 								</span>
 							</a>
-							{#if projectsOpen}
-								<ul class="sub-menu">
-									{#each nav.subItems as subItem}
-										<li class="sub-menu-item">
-											<a href={subItem.url} style="font-size: small;">
-												<span>󰘍</span>
 
-												{subItem.label}
-											</a>
-										</li>
-									{/each}
-								</ul>
-							{/if}
+							<ul class="sub-menu">
+								{#each nav.subItems as subItem, j}
+									<li style="--item-index: {j};">
+										<a href={subItem.url} class="list-item submenu-item" on:click={changeComponent(i)} style="font-size: small;">
+											<span>󰘍</span>
+											{subItem.label}
+										</a>
+									</li>
+								{/each}
+							</ul>
 						</div>
 					{:else}
-						<a class="nav-link" on:click={changeComponent} id={i.toString()} transition:fade|global={{ delay: i * 500 }} href={nav.url}>
+						<a class="nav-link list-item" on:click={changeComponent(i)} id={i.toString()} transition:fade|global={{ delay: i * 500 }} href={nav.url}>
 							<span class="link-arrow">=></span>
 							{nav.label}
 						</a>
@@ -101,9 +94,12 @@
 		z-index: 0;
 		transition:
 			transform 0.25s ease-in-out,
-			width 0.3s ease-in-out; /* Add width transition */
-		width: auto; /* Allow width to be dynamic */
-		max-width: 100%; /* Prevent overflow */
+			width 0.3s ease-in-out,
+			max-width 0.3s ease-in-out;
+		width: auto;
+		max-width: 100%;
+		overflow: hidden; /* Add this to prevent content from showing outside during animation */
+		width: min-content;
 	}
 
 	ul {
@@ -138,20 +134,14 @@
 		transition: transform 0.25s ease-in-out; /*  Both ways */
 	}
 
-	.link-arrow.open {
-		transform: rotate(90deg);
-		transition: transform 0.25s ease-in-out; /*  Both ways */
-	}
-
 	.nav-link {
 		text-decoration: none;
 		display: block;
 		text-wrap: nowrap;
-		padding: 8px 15px 8px 0;
 	}
 
 	.active > a {
-		color: var(--verdigris);
+		color: #f2a378;
 		font-weight: bolder;
 		text-shadow: 0px 0px 12px var(--verdigris);
 	}
@@ -162,6 +152,7 @@
 	}
 
 	.list-item:hover {
+		color: var(--verdigris);
 		text-shadow: 0px 0px 12px var(--verdigris);
 	}
 
@@ -189,23 +180,52 @@
 
 	.projects-container {
 		cursor: pointer;
+		width: 100%;
+	}
+
+	.projects-container:hover .sub-menu {
+		max-height: 1000px; /* Allow for many items */
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.projects-container:hover .link-arrow {
+		transform: rotate(90deg);
+		transition: transform 0.25s ease-in-out;
 	}
 
 	.sub-menu {
 		list-style: none;
+		max-height: 0;
+		opacity: 0;
+		visibility: hidden;
+		overflow: hidden;
 		padding-left: 20px;
+		transition:
+			max-height 0.3s ease,
+			opacity 0.3s ease,
+			visibility 0.3s ease;
 	}
 
 	.sub-menu li {
-		margin: 0;
+		margin: 2px 0;
+		transform: translateX(-20px);
+		opacity: 0;
+		transition:
+			transform 0.3s ease,
+			opacity 0.3s ease;
+		transition-delay: calc(var(--item-index, 0) * 0.05s);
 	}
 
-	.sub-menu-item:hover {
-		text-shadow: 0px 0px 12px var(--verdigris); /* Hover for subitems */
+	.projects-container:hover .sub-menu li {
+		transform: translateX(0);
+		opacity: 1;
 	}
 
-	.projects-container:hover {
-		text-shadow: 0px 0px 12px var(--verdigris); /*  Hover for entire Projects menu */
+	@media (pointer: coarse) {
+		a:hover {
+			display: none;
+		}
 	}
 
 	@media only screen and (max-width: 767px) {
