@@ -48,7 +48,7 @@
 							<a class="nav-link list-item" href={nav.url} on:click={changeComponent(i)} style="display: flex; align-items: center; justify-content: space-between;">
 								<span>
 									<span class="link-arrow">=></span>
-									{nav.label}
+									<span class="lshift">&lcub;</span>{nav.label}<span class="rshift">&rcub;</span>
 								</span>
 							</a>
 
@@ -66,7 +66,7 @@
 					{:else}
 						<a class="nav-link list-item" on:click={changeComponent(i)} id={i.toString()} transition:fade|global={{ delay: i * 500 }} href={nav.url}>
 							<span class="link-arrow">=></span>
-							{nav.label}
+							<span class="lshift">&lcub;</span>{nav.label}<span class="rshift">&rcub;</span>
 						</a>
 					{/if}
 				</li>
@@ -95,11 +95,17 @@
 		transition:
 			transform 0.25s ease-in-out,
 			width 0.3s ease-in-out,
-			max-width 0.3s ease-in-out;
+			max-width 0.3s ease-in-out,
+			left 0.5s ease-in-out,
+			border 250ms ease-in-out;
 		width: auto;
 		max-width: 100%;
-		overflow: hidden; /* Add this to prevent content from showing outside during animation */
 		width: min-content;
+		overflow: auto;
+	}
+
+	nav:hover {
+		border: 1px solid var(--focus-border);
 	}
 
 	ul {
@@ -126,6 +132,7 @@
 	}
 
 	.link-arrow {
+		margin-right: 4px;
 		color: var(--linen);
 		font-weight: 900;
 		font-style: normal;
@@ -146,6 +153,12 @@
 		text-shadow: 0px 0px 12px var(--verdigris);
 	}
 
+	.lshift,
+	.rshift {
+		display: inline-block;
+		transition: 250ms;
+	}
+
 	.list-item {
 		margin: 0;
 		transition: 0.2s;
@@ -155,16 +168,22 @@
 		color: var(--verdigris);
 		text-shadow: 0px 0px 12px var(--verdigris);
 	}
+	.list-item:hover .lshift,
+	.projects-container:hover .lshift {
+		transform: translateX(-8px);
+	}
+	.list-item:hover .rshift,
+	.projects-container:hover .rshift {
+		transform: translateX(8px);
+	}
 
 	.open {
 		left: 1rem;
-		transition: left 0.5s ease-in-out;
 		z-index: 1001;
 	}
 
 	.closed {
 		left: -100%;
-		transition: left 0.5s ease-in-out;
 		z-index: 1001;
 	}
 

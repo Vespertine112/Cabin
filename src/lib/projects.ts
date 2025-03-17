@@ -27,6 +27,20 @@ export const projects: Project[] = [
 			"Built a FOSS clone of popular multiplayer snake games! Watch a <a class='links' href='https://youtu.be/Ma6ILRWCc4o?si=uWpkPHns6UMs9q6m'>gameplay demo</a>, or see <a class='links' href='https://www.youtube.com/watch?v=SWfXIEYYWyw'>mobile support</a>. It includes the client & server, scoring, multiple control schemes & mappable controls, Real-time leaderboard tracking, dynamic aspect ratio rendering, Input lag calculation, Mobile support, and so much more! Play today at the link above (it's a github link, you need to build it)."
 	},
 	{
+		name: 'Cabin',
+		sectionId: 'cabin',
+		icon: '🛖',
+		url: 'https://github.com/Vespertine112/Cabin',
+		urlTippy: "Come see how it's made",
+		technologies: 'Svelte, Websockets, Vercel, Typescript, etc',
+		newTarget: false,
+		date: 'Mar 2024 - Present',
+		images: ['images/projects/lander.png', 'images/projects/nybbles.png', 'images/projects/projects.png'],
+
+		description:
+			'This very website! "Cabin" is the name of my portfolio website. It\'s built with Svelte 4, typescript, and other web-tech items, all coalescing to bring you the very best in internet user experiences... maybe. Wait do I see lunarlander? On the portoflio website? I wonder how you get there? 🥚 '
+	},
+	{
 		name: 'LunarLander',
 		sectionId: 'lunarlander',
 		icon: '🚀',
