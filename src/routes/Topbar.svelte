@@ -79,13 +79,12 @@
 		justify-content: space-between;
 		box-shadow: var(--shadow);
 		align-items: center;
-		transition: 500ms;
+		transition: 250ms ease-in-out;
 	}
 
 	.top-bar:hover {
-		background-color: var(--background);
+		border: 1px solid var(--focus-border);
 	}
-
 	.pageName {
 		font-size: 1.5rem;
 		font-family: 'JetBrains Mono';

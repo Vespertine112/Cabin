@@ -20,6 +20,7 @@
 			--verdigris: #7ebdc2;
 			--vanilla: #f3dfa2;
 			--linen: #efe6dd;
+			--focus-border: var(--persianRed);
 			--shadow: 0 8px 16px rgba(0, 0, 0, 1);
 		}
 
@@ -140,7 +141,7 @@
 			border-radius: 8px;
 			border: 1px solid var(--linen);
 			padding: 10px;
-			background-color: var(--background-transparent);
+			background-color: var(--background);
 			color: var(--linen);
 			box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
 			flex: 1 1 auto;
@@ -154,11 +155,11 @@
 			overflow-x: hidden;
 			font-family: 'JetBrains Mono', monospace;
 			margin: 0 0 0 4px;
-			transition: 500ms;
+			transition: 250ms ease-in-out;
 		}
 
 		.cardWrapper:hover {
-			background-color: var(--background);
+			border: 1px solid var(--focus-border);
 		}
 
 		/* Generic color set for links */
