@@ -74,7 +74,7 @@
 		border: 1px solid var(--linen);
 		padding: 10px;
 		color: var(--linen);
-		background-color: var(--background-transparent);
+		background-color: var(--background);
 		display: flex;
 		justify-content: space-between;
 		box-shadow: var(--shadow);

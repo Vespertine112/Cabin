@@ -86,6 +86,7 @@
 		border: 1px solid var(--linen);
 		padding: 10px;
 		box-shadow: var(--shadow);
+		background-color: var(--background);
 		display: flex;
 		margin: 0 4px 0 0;
 		flex-direction: column;
@@ -179,23 +180,11 @@
 	.open {
 		left: 1rem;
 		z-index: 1001;
-
-		background-color: var(--background-transparent);
-		transition:
-			left 0.5s ease-in-out,
-			background-color 500ms ease;
-	}
-	.open:hover {
-		background-color: var(--background);
 	}
 
 	.closed {
 		left: -100%;
 		z-index: 1001;
-		background-color: var(--background-transparent);
-	}
-	.closed:hover {
-		background-color: var(--background);
 	}
 
 	.overlay {
@@ -221,7 +210,7 @@
 
 	.projects-container:hover .link-arrow {
 		transform: rotate(90deg);
-		transition: transform 0.25s ease-in-out;
+		transition: transform 250ms ease-in-out;
 	}
 
 	.sub-menu {
