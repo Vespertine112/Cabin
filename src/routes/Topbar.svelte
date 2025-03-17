@@ -74,11 +74,16 @@
 		border: 1px solid var(--linen);
 		padding: 10px;
 		color: var(--linen);
-		background-color: var(--background);
+		background-color: var(--background-transparent);
 		display: flex;
 		justify-content: space-between;
 		box-shadow: var(--shadow);
 		align-items: center;
+		transition: 500ms;
+	}
+
+	.top-bar:hover {
+		background-color: var(--background);
 	}
 
 	.pageName {

@@ -10,7 +10,7 @@ export const nybbles: Project[] = [
 		technologies: 'Go, BubbleTea',
 		newTarget: true,
 		date: 'Sept 2024',
-		images: ['images/goof/goof.gif'],
+		images: ['images/goof/goof.gif', 'images/goof/goof2.gif'],
 		description:
 			"An high performance render of conway's game of life for the terminal. Includes color state(s) which change as a cell ages, and then decay upon death. This reveals interesting patterns not shown in typical GOL simulations"
 	}

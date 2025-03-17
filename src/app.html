@@ -15,6 +15,7 @@
 	<style>
 		:root {
 			--background: #231f20;
+			--background-transparent: rgb(from var(--background) R G B / 0.85);
 			--persianRed: #bb4430;
 			--verdigris: #7ebdc2;
 			--vanilla: #f3dfa2;
@@ -85,7 +86,6 @@
 			scrollbar-color: var(--verdigris);
 			font-family: 'JetBrains Mono', monospace;
 			height: 100vh;
-			scroll-behavior: smooth;
 		}
 
 		*,
@@ -140,8 +140,7 @@
 			border-radius: 8px;
 			border: 1px solid var(--linen);
 			padding: 10px;
-			background-color: var(--background);
-			/* background-color: rgb(0, 0, 0, 40%); */
+			background-color: var(--background-transparent);
 			color: var(--linen);
 			box-shadow: 0 8px 16px rgba(0, 0, 0, 1);
 			flex: 1 1 auto;
@@ -155,6 +154,11 @@
 			overflow-x: hidden;
 			font-family: 'JetBrains Mono', monospace;
 			margin: 0 0 0 4px;
+			transition: 500ms;
+		}
+
+		.cardWrapper:hover {
+			background-color: var(--background);
 		}
 
 		/* Generic color set for links */

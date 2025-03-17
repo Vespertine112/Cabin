@@ -84,7 +84,6 @@
 	nav {
 		border-radius: 8px;
 		border: 1px solid var(--linen);
-		background-color: var(--background);
 		padding: 10px;
 		box-shadow: var(--shadow);
 		display: flex;
@@ -92,13 +91,6 @@
 		flex-direction: column;
 		flex: 1 1 auto;
 		z-index: 0;
-		transition:
-			transform 0.25s ease-in-out,
-			width 0.3s ease-in-out,
-			max-width 0.3s ease-in-out;
-		width: auto;
-		max-width: 100%;
-		overflow: hidden; /* Add this to prevent content from showing outside during animation */
 		width: min-content;
 	}
 
@@ -158,14 +150,27 @@
 
 	.open {
 		left: 1rem;
-		transition: left 0.5s ease-in-out;
 		z-index: 1001;
+
+		background-color: var(--background-transparent);
+		transition:
+			left 0.5s ease-in-out,
+			background-color 500ms ease;
+	}
+	.open:hover {
+		background-color: var(--background);
 	}
 
 	.closed {
 		left: -100%;
-		transition: left 0.5s ease-in-out;
+		transition:
+			left 0.5s ease-in-out,
+			background-color 0.3s ease;
 		z-index: 1001;
+		background-color: var(--background-transparent);
+	}
+	.closed:hover {
+		background-color: var(--background);
 	}
 
 	.overlay {
@@ -223,9 +228,6 @@
 	}
 
 	@media (pointer: coarse) {
-		a:hover {
-			display: none;
-		}
 	}
 
 	@media only screen and (max-width: 767px) {
