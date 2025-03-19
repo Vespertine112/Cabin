@@ -8,6 +8,9 @@
 	import 'tippy.js/themes/material.css';
 	import { ForceRequestInit } from '$lib/types';
 
+	export let data;
+	console.log(data);
+
 	updateTopbarName('Brayden Hill');
 	let show: boolean = false;
 	onMount(() => {
@@ -24,7 +27,7 @@
 		.then((result) => result.json())
 		.then((result) => {
 			quote = result.results[getRandomInt(0, result.results.length)];
-			return fetch(`https://quotable.vercel.app/authors?slug=${quote.authorSlug ?? 'albert-einstein'}`);
+			return fetch(`https://quotable.vercel.app/authors?slug=${quote?.authorSlug ?? 'albert-einstein'}`);
 		})
 		.then((response) => response.json())
 		.then((result) => {

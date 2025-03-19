@@ -15,7 +15,8 @@
 			label: 'Projects',
 			subItems: projects.map((p) => ({ url: `/projects#${p.sectionId}`, label: p.name }))
 		},
-		{ url: '/nybbles', label: 'Nybbles', subItems: nybbles.map((p) => ({ url: `/nybbles#${p.sectionId}`, label: p.name })) }
+		{ url: '/nybbles', label: 'Nybbles', subItems: nybbles.map((p) => ({ url: `/nybbles#${p.sectionId}`, label: p.name })) },
+		{ url: '/blog', label: 'Blog' }
 	];
 
 	export let open = false;
@@ -41,11 +42,17 @@
 			{#each navOptions as nav, i}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-				<li class={intSelected == i ? 'active ' : ''}>
+				<li>
 					{#if nav.subItems}
 						<!-- svelte-ignore a11y-interactive-supports-focus -->
 						<div class="projects-container" role="button">
-							<a class="nav-link list-item" href={nav.url} on:click={changeComponent(i)} style="display: flex; align-items: center; justify-content: space-between;">
+							<a
+								class="nav-link list-item"
+								class:active={intSelected === i}
+								href={nav.url}
+								on:click={changeComponent(i)}
+								style="display: flex; align-items: center; justify-content: space-between;"
+							>
 								<span>
 									<span class="link-arrow">=></span>
 									<span class="lshift">&lcub;</span>{nav.label}<span class="rshift">&rcub;</span>
@@ -64,7 +71,14 @@
 							</ul>
 						</div>
 					{:else}
-						<a class="nav-link list-item" on:click={changeComponent(i)} id={i.toString()} transition:fade|global={{ delay: i * 500 }} href={nav.url}>
+						<a
+							class:active={intSelected === i}
+							class="nav-link list-item"
+							on:click={changeComponent(i)}
+							id={i.toString()}
+							transition:fade|global={{ delay: i * 500 }}
+							href={nav.url}
+						>
 							<span class="link-arrow">=></span>
 							<span class="lshift">&lcub;</span>{nav.label}<span class="rshift">&rcub;</span>
 						</a>
@@ -147,7 +161,7 @@
 		text-wrap: nowrap;
 	}
 
-	.active > a {
+	.active {
 		color: #f2a378;
 		font-weight: bolder;
 		text-shadow: 0px 0px 12px var(--verdigris);

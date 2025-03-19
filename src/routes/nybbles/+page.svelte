@@ -60,7 +60,7 @@
 				{#if browser}
 					<div class="carouselWrapper">
 						{#if nybble.images && revealImages}
-							<Carousel autoplay autoplayDuration={7500} autoplayProgressVisible pauseOnFocus swiping={true} bind:this={carousel}>
+							<Carousel autoplay autoplayDuration={12500} autoplayProgressVisible pauseOnFocus swiping={true} bind:this={carousel}>
 								{#each nybble.images as image, i}
 									<img class="carouselImage" in:scale|global={{ delay: 1000 * i, duration: 1000, easing: quintOut }} src={image} alt="" />
 								{/each}

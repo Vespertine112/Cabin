@@ -20,11 +20,11 @@
 	$: quote = { content: '', author: '', authorSlug: '' };
 	$: author = { url: '', bio: '', description: '' };
 	const getRandomInt = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
-	fetch('https://api.quotable.io/quotes?tags=Technology|Creativity|Imagination|Science|Creativity', ForceRequestInit)
+	fetch('https://quotable.vercel.app/quotes?tags=Technology|Creativity|Imagination|Science|Creativity', ForceRequestInit)
 		.then((result) => result.json())
 		.then((result) => {
 			quote = result.results[getRandomInt(0, result.results.length)];
-			return fetch(`https://api.quotable.io/authors?slug=${quote.authorSlug ?? 'albert-einstein'}`);
+			return fetch(`https://quotable.vercel.app/authors?slug=${quote.authorSlug ?? 'albert-einstein'}`);
 		})
 		.then((response) => response.json())
 		.then((result) => {
@@ -38,50 +38,15 @@
 
 {#if show}
 	<div transition:fly={{ y: 50, x: 50, duration: 1000 }} class="cardWrapper">
-		<h1 class="topline" in:typewriter={{}}>Hi, I'm Brayden.</h1>
+		<h1 class="topline" in:typewriter={{ speed: 2 }}>Woah there, this page doesn't exist yet.</h1>
+		<p in:typewriter={{ speed: 2 }}>maybe ever? where exactly are you?</p>
 
-		<div class="profilePicWrapper">
-			<!-- svelte-ignore a11y-img-redundant-alt -->
-			<img
-				transition:blur={{ amount: 100, duration: 1000 }}
-				src="/images/profile/profile.jpg"
-				class="profilePic"
-				alt="Profile Picture"
-			/>
-		</div>
-
-		<p class="p-line" in:fly={{ x: 100, duration: 2000 }}>
-			Welcome in! I'm a software developer with <strong>{new Date().getFullYear() - 2022} years</strong> of experience.
-		</p>
-		<p class="p-line" in:fly={{ x: -100, duration: 2000 }}>
-			Currently, I work as a <strong>Full-Stack Developer</strong> focused on building a full-service CRM system in
-			the window and door manufacturing space.
-		</p>
-		<p class="p-line" in:fly={{ x: 100, duration: 2000 }}>
-			When I'm not writing code, I love to get outdoors, exercise, or fall down the rabbit hole on a fascinating
-			topic!
-			<i
-				><a class="links" href="https://en.wikipedia.org/wiki/The_Crystal_Palace" target="_blank"
-					>Crystal Palace, anyone?</a
-				></i
-			>
-		</p>
-		<p class="p-line" in:fly={{ x: -100, duration: 2000 }}>
-			I'm currently open new roles in the Full-Stack developent space.
-		</p>
-		<p class="p-line" in:fly={{ x: 100, duration: 2000 }}>
-			Feel free to contact me at any of the links above! I'd love to hear from you!
-		</p>
+		<img src="https://imgs.xkcd.com/comics/lungfish.png" id="xkcd" alt="The xkcd comic of the day" />
 
 		<div class="quoteBlock">
 			<i
 				>{quote?.content ?? ''} -
-				<a
-					href={author?.url ?? ''}
-					class="links"
-					use:tooltip={{ content: author?.bio ?? '', theme: 'material', placement: 'top' }}
-					target="_blank">{quote.author}</a
-				></i
+				<a href={author?.url ?? ''} class="links" use:tooltip={{ content: author?.bio ?? '', theme: 'material', placement: 'top' }} target="_blank">{quote.author}</a></i
 			>
 		</div>
 	</div>
