@@ -1,5 +1,7 @@
 export function typewriter(node: Node, { speed = 1 }) {
-	if (!(node.childNodes.length === 1)) return;
+	if (!(node.childNodes.length === 1)) {
+		return;
+	}
 
 	const text = node.textContent || '';
 	const duration = text.length / (speed * 0.01);

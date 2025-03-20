@@ -10,7 +10,8 @@
 	import Carousel from 'svelte-carousel';
 	import { browser } from '$app/environment';
 	import { cubicInOut, cubicOut, quintIn, quintOut } from 'svelte/easing';
-	import { experiences } from '$lib/experience';
+	import { tooltip } from '$lib';
+	import { blogPosts } from '$lib/blogPosts';
 
 	let carousel: any;
 
@@ -19,7 +20,7 @@
 		show = true;
 	});
 
-	updateTopbarName('Posts');
+	updateTopbarName('Bi-occasional Posts');
 
 	fetch;
 
@@ -30,19 +31,58 @@
 </script>
 
 {#if show}
-	<div in:fly={cardTransition} class="cardWrapper">
-		<h1 class="topline">Coming soon...</h1>
+	<div transition:fly={cardTransition} class="cardWrapper">
+		<h1 class="topline">~ Posts ~</h1>
+		<div style="display: flex; flex-direction: row">
+			<p style="margin:0; font-style: italic">Here is where I write the dumb thoughts...</p>
+			<sup
+				style="margin-left: 1em"
+				use:tooltip={{ content: 'Warning: For legal reasons everything on written under /blog is satire.', theme: 'material', placement: 'bottom' }}>⚠</sup
+			>
+		</div>
 		<hr />
-		<img src="https://imgs.xkcd.com/comics/lungfish.png" id="xkcd" alt="The xkcd comic of the day" />
+
+		{#each blogPosts as post}
+			<div class="blogWrapper" id={post.sectionId}>
+				<div class="blogTopper" transition:blur={blurOptions}>
+					<div class="name-and-icon">
+						<a class="links" use:tooltip={{ content: post.tagline, theme: 'material', placement: 'left' }} href={post.url} target={post.newTarget ? '_blank' : ''}
+							>{post.name}</a
+						> <span style=" margin-left: 0.5rem;">- {post.date}</span>
+					</div>
+				</div>
+
+				{#if browser}
+					<div class="carouselWrapper">
+						{#if post.images && revealImages}
+							<hr class="mediumHr" />
+							<Carousel autoplay autoplayDuration={12500} autoplayProgressVisible pauseOnFocus swiping={true} bind:this={carousel}>
+								{#each post.images as image, i}
+									<img class="carouselImage" in:scale|global={{ delay: 1000 * i, duration: 1000, easing: quintOut }} src={image} alt="" />
+								{/each}
+							</Carousel>
+						{/if}
+
+						{#if post.video}
+							<!-- svelte-ignore a11y-media-has-caption -->
+							<video class="carouselImage" src={post.video} controls loop autoplay></video>
+						{/if}
+					</div>
+				{/if}
+
+				<hr class="smallHr" />
+
+				<div class="experienceDescription" in:typewriter|global={{ speed: 10 }}>
+					{@html post.description}
+				</div>
+
+				<hr class="smallHr" />
+			</div>
+		{/each}
 	</div>
 {/if}
 
 <style>
-	.companyLogo {
-		height: 5vh;
-		border-radius: 4px;
-	}
-
 	hr {
 		width: 100%;
 	}
@@ -65,12 +105,25 @@
 		font-size: 1.5rem;
 		font-weight: bolder;
 	}
-
-	.lineLabel {
+	.blogTopper {
+		font-family: 'JetBrains Mono';
+		width: 100%;
+	}
+	.name-and-icon {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	.postTagline {
 		font-weight: bold;
+		color: var(--accent-color);
+		font-style: italic;
+		margin-top: 0.5rem;
+		font-size: small;
+		width: 100%;
 	}
 
-	.experienceWrapper {
+	.blogWrapper {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -87,20 +140,16 @@
 		align-items: center;
 	}
 
-	.experienceTime {
-		width: 100%;
-	}
-
-	.experienceDescription {
+	.postDescription {
 		padding: 4px 0 4px 0;
 	}
 
-	.experiences {
+	.posts {
 		overflow: visible;
 	}
 
 	@media only screen and (max-width: 767px) {
-		.experienceWrapper {
+		.blogWrapper {
 			display: flex;
 			flex-direction: column;
 			align-items: center;

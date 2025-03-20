@@ -24,7 +24,7 @@
 		.then((result) => result.json())
 		.then((result) => {
 			quote = result.results[getRandomInt(0, result.results.length)];
-			return fetch(`https://quotable.vercel.app/authors?slug=${quote.authorSlug ?? 'albert-einstein'}`);
+			return fetch(`https://quotable.vercel.app/authors?slug=${quote?.authorSlug ?? 'albert-einstein'}`);
 		})
 		.then((response) => response.json())
 		.then((result) => {

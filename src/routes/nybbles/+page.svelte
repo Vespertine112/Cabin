@@ -13,8 +13,6 @@
 	import 'tippy.js/dist/tippy.css';
 	import 'tippy.js/themes/material.css';
 
-	// export let data: PageData;
-
 	let show: boolean = false;
 	let carousel: any;
 
@@ -76,7 +74,7 @@
 
 				<hr class="smallHr" />
 
-				<div class="experienceDescription" in:typewriter|global={{ speed: 20 }}>
+				<div class="" in:typewriter|global={{ speed: 20 }}>
 					{@html nybble.description}
 				</div>
 

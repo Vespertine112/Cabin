@@ -54,15 +54,15 @@
 
 		<div class="menu">
 			<a use:tooltip={{ content: 'Email Me!', theme: 'material', placement: 'bottom' }} href="mailto:hillbgh@gmail.com" class="menu-item">
-				<img src="icons/email.svg" alt="My Email" class="logo" />
+				<img src="/icons/email.svg" alt="My Email" class="logo" />
 			</a>
 
 			<a use:tooltip={{ content: 'My Github', theme: 'material', placement: 'bottom' }} href="https://github.com/Vespertine112" class="menu-item" target="_blank">
-				<img src="icons/github.svg" alt="GitHub" class="logo" />
+				<img src="/icons/github.svg" alt="GitHub" class="logo" />
 			</a>
 
 			<a use:tooltip={{ content: 'My LinkedIn', theme: 'material', placement: 'bottom' }} href="https://www.linkedin.com/in/brayden-hill/" class="menu-item" target="_blank">
-				<img src="icons/linkedin.svg" alt="Linkedin" class="logo" />
+				<img src="/icons/linkedin.svg" alt="Linkedin" class="logo" />
 			</a>
 		</div>
 	</div>

@@ -4,9 +4,10 @@
 	import { onMount } from 'svelte';
 	import { projects } from '$lib/projects';
 	import { nybbles } from '$lib/nybbles';
+	import { blogPosts } from '$lib/blogPosts';
 	import { experiences } from '$lib/experience';
 
-	export const navOptions = [
+	const mainMenuList = [
 		{ url: '/', label: 'Home' },
 		{ url: '/about', label: 'About' },
 		{ url: '/experience', label: 'Experience', subItems: experiences.map((e) => ({ url: `/experience#${e.sectionId}`, label: e.name })) },
@@ -16,8 +17,10 @@
 			subItems: projects.map((p) => ({ url: `/projects#${p.sectionId}`, label: p.name }))
 		},
 		{ url: '/nybbles', label: 'Nybbles', subItems: nybbles.map((p) => ({ url: `/nybbles#${p.sectionId}`, label: p.name })) },
-		{ url: '/blog', label: 'Blog' }
+		{ url: '/blog', label: 'Blog', subItems: blogPosts.map((p) => ({ url: p.url, label: p.name })) }
 	];
+
+	export const navOptions = [...mainMenuList];
 
 	export let open = false;
 	let show: boolean = false;
